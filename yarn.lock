@@ -4906,6 +4906,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@repo/drizzle-connection@workspace:*, @repo/drizzle-connection@workspace:packages/repo-drizzle-connection":
+  version: 0.0.0-use.local
+  resolution: "@repo/drizzle-connection@workspace:packages/repo-drizzle-connection"
+  dependencies:
+    "@nestjs/cli": "npm:11.0.5"
+    "@nestjs/common": "npm:11.0.11"
+    "@nestjs/config": "npm:4.0.1"
+    "@nestjs/core": "npm:11.0.11"
+    "@repo/eslint-config": "workspace:*"
+    "@repo/logger": "workspace:*"
+    "@repo/typescript-config": "workspace:*"
+    "@types/pg": "npm:8.11.14"
+    drizzle-kit: "npm:0.31.1"
+    drizzle-orm: "npm:0.43.1"
+    drizzle-seed: "npm:0.3.1"
+    joi: "npm:17.13.3"
+    pg: "npm:8.15.6"
+    reflect-metadata: "npm:0.2.2"
+    rimraf: "npm:6.0.1"
+    rxjs: "npm:7.8.1"
+    tsx: "npm:4.19.4"
+    utility-types: "npm:3.11.0"
+  languageName: unknown
+  linkType: soft
+
 "@repo/eslint-config@workspace:*, @repo/eslint-config@workspace:packages/eslint-config":
   version: 0.0.0-use.local
   resolution: "@repo/eslint-config@workspace:packages/eslint-config"
@@ -7301,31 +7326,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanir/drizzle-connection@workspace:*, @vanir/drizzle-connection@workspace:packages/repo-drizzle-connection":
-  version: 0.0.0-use.local
-  resolution: "@vanir/drizzle-connection@workspace:packages/repo-drizzle-connection"
-  dependencies:
-    "@nestjs/cli": "npm:11.0.5"
-    "@nestjs/common": "npm:11.0.11"
-    "@nestjs/config": "npm:4.0.1"
-    "@nestjs/core": "npm:11.0.11"
-    "@repo/eslint-config": "workspace:*"
-    "@repo/logger": "workspace:*"
-    "@repo/typescript-config": "workspace:*"
-    "@types/pg": "npm:8.11.14"
-    drizzle-kit: "npm:0.31.1"
-    drizzle-orm: "npm:0.43.1"
-    drizzle-seed: "npm:0.3.1"
-    joi: "npm:17.13.3"
-    pg: "npm:8.15.6"
-    reflect-metadata: "npm:0.2.2"
-    rimraf: "npm:6.0.1"
-    rxjs: "npm:7.8.1"
-    tsx: "npm:4.19.4"
-    utility-types: "npm:3.11.0"
-  languageName: unknown
-  linkType: soft
-
 "@vercel/ncc@npm:0.38.3":
   version: 0.38.3
   resolution: "@vercel/ncc@npm:0.38.3"
@@ -8544,6 +8544,7 @@ __metadata:
     "@nestjs/schematics": "npm:11.0.0"
     "@nestjs/swagger": "npm:11.0.3"
     "@nestjs/testing": "npm:11.0.1"
+    "@repo/drizzle-connection": "workspace:*"
     "@repo/eslint-config": "workspace:*"
     "@repo/nest-infra-server": "workspace:*"
     "@repo/typescript-config": "workspace:*"
@@ -8553,7 +8554,6 @@ __metadata:
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:22.10.7"
     "@types/supertest": "npm:6.0.2"
-    "@vanir/drizzle-connection": "workspace:*"
     "@vercel/ncc": "npm:0.38.3"
     globals: "npm:16.0.0"
     graphql: "npm:16.11.0"
