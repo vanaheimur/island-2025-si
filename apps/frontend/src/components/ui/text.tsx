@@ -8,7 +8,7 @@ const textStyles = cva('', {
       light: 'font-light',
       regular: 'font-normal',
       medium: 'font-medium',
-      bold: 'font-bold',
+      bold: 'font-semibold',
     },
     size: {
       h1: 'text-mobile-h1 md:text-h1',
