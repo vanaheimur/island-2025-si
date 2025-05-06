@@ -3,7 +3,7 @@ import { DeepRequired } from 'utility-types'
 
 const config = () => {
   const values = {
-    secret: process.env.APP_SECRET,
+    secret: process.env.AUTH_TOKEN_SECRET,
   }
 
   const schema = Joi.object({

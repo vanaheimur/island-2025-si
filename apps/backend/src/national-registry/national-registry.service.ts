@@ -5,11 +5,14 @@ import { NR_CLIENT, PersonsApi } from '@repo/nr-connection'
 export class NationalRegistryService {
   constructor(@Inject(NR_CLIENT) private readonly personsClient: PersonsApi) {}
 
-  public async getPersonById(nationalId: string) {
-    const person =
-      await this.personsClient.personsControllerGetPersonByNationalIdV1({
+  public async getPersonById(auth: string, nationalId: string) {
+    return await this.personsClient.personsControllerGetPersonByNationalIdV1(
+      {
         nationalId,
-      })
-    return person
+      },
+      // adding this header can be standardized using middleware
+      // token exchanges can be handled automatically in the same way
+      { headers: { Authorization: `Bearer ${auth}` } },
+    )
   }
 }
