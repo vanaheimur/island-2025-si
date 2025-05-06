@@ -6,5 +6,6 @@ import { NrConnectionModule } from '@repo/nr-connection'
 @Module({
   imports: [NrConnectionModule],
   providers: [NationalRegistryService],
+  exports: [NationalRegistryService],
 })
 export class NationalRegistryModule {}

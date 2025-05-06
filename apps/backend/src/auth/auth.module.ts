@@ -3,6 +3,7 @@ import { AuthService } from './auth.service'
 import config, { type AuthConfig } from './config'
 import { JwtAuthGuard } from './jwtAuth/jwtAuth.guard'
 import { JwtAuthStrategy } from './jwtAuth/jwtAuth.strategy'
+import { NationalRegistryModule } from '../national-registry/national-registry.module'
 
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
@@ -22,6 +23,7 @@ import { JwtModule } from '@nestjs/jwt'
       }),
       inject: [ConfigService],
     }),
+    NationalRegistryModule,
   ],
   providers: [
     AuthService,
