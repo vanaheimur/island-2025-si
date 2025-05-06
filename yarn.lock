@@ -13657,6 +13657,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "island-2025@workspace:."
   dependencies:
+    "@repo/rsk-connection": "workspace:*"
     "@turbo/gen": "npm:2.5.2"
     prettier: "npm:3.5.3"
     turbo: "npm:2.5.2"

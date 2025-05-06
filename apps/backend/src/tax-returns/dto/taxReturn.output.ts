@@ -1,3 +1,8 @@
+import { AssetOutput } from './asset.output'
+import { IncomeOutput } from './income.output'
+import { MortgageOutput } from './mortgage.output'
+import { OtherDebtOutput } from './otherDebt.output'
+
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
 import { TaxReturnOutputStatusEnum } from '@repo/rsk-connection'
 
@@ -12,6 +17,12 @@ export class TaxReturnOutput {
   status!: TaxReturnOutputStatusEnum
   createdAt!: Date
   updatedAt!: Date
+  userId!: number
+
+  incomes!: IncomeOutput[]
+  assets!: AssetOutput[]
+  mortgages!: MortgageOutput[]
+  otherDebts!: OtherDebtOutput[]
 
   // this allows us to cast data to an instance of this class
   constructor(partial: Partial<TaxReturnOutput>) {
