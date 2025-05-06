@@ -2,6 +2,10 @@ import { Stepper } from '@/components/stepper/stepper'
 import Link from 'next/link'
 import BasicInfo from './_stepps/basic-info'
 import DataGathering from './_stepps/data-gathering'
+import Income from './_stepps/income'
+import Properties from './_stepps/properties'
+import Debts from './_stepps/debts'
+import Done from './_stepps/qqq'
 
 type Props = {
   params: {
@@ -13,6 +17,10 @@ type Props = {
 const steps = {
   upplysingasofnun: DataGathering,
   'almennar-upplysingar': BasicInfo,
+  tekjur: Income,
+  eignir: Properties,
+  skuldir: Debts,
+  sjuddirarirei: Done,
 } as const
 
 const isStep = (step: string): step is keyof typeof steps =>

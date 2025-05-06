@@ -4,13 +4,43 @@ import Link from 'next/link'
 
 export default function BasicInfo() {
   return (
-    <div>
-      <Text variant="h2">Almennar upplysingar</Text>
-      <div className="flex justify-between mt-8">
+    <div className="flex flex-col gap-20">
+      <div>
+        <Text variant="h2" className="mb-4">Jökull Þórðarson</Text>
+      </div>
+
+      <div>
+        <Text variant="h2" className="mb-4">1.1 - Börn</Text>
+        <Text variant="sm" className="mb-4">
+          Börn fædd 2012 og síðar með lögheimili hjá framteljanda í lok árs 2025
+        </Text>
+      </div>
+
+      <div>
+        <Text variant="h2" className="mb-4">1.2 - Samsköttun</Text>
+        <Text variant="sm" className="mb-4">
+          Einstaklingar í óvígðri sambúð sem uppfylla skilyrði, geta óskað eftir
+          samsköttun með að merkja í reitinn.
+        </Text>
+      </div>
+
+      <div>
+        <Text variant="h2" className="mb-4">
+          1.3 - Dvalartími - búseta á íslandi hluta úr ári
+        </Text>
+        <Text variant="sm" className="mb-4">
+          Ef þú bjóst á íslandi aðerins hluta ársins fyllir þú inn dagsetningar
+          hér.
+        </Text>
+      </div>
+
+      <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/skattframtal/upplysingasofnun">Til baka</Link>
         </Button>
-        <Button size="lg">Áfram</Button>
+        <Button size="lg">
+          <Link href="/umsokn/skattframtal/tekjur">Halda áfram í tekjur</Link>
+        </Button>
       </div>
     </div>
   )
