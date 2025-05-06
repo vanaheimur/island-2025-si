@@ -1,4 +1,5 @@
 import { AuthConfig } from '../config'
+import { ACCESS_TOKEN } from '../constants'
 import type { JwtPayload, User } from '../types'
 
 import { Injectable } from '@nestjs/common'
@@ -11,7 +12,12 @@ import { ExtractJwt, Strategy } from 'passport-jwt'
 export class JwtAuthStrategy extends PassportStrategy(Strategy, 'jwt-auth') {
   constructor(readonly configService: ConfigService<AuthConfig>) {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        (req) => {
+          const token = req?.cookies[ACCESS_TOKEN]
+          return token || null
+        },
+      ]),
       ignoreExpiration: false,
       secretOrKey: configService.getOrThrow('auth.secret', { infer: true }),
       passReqToCallback: true,
