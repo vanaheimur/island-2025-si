@@ -1,5 +1,5 @@
 import { TaxReturnOutput } from './dto/taxReturn.output'
-import { TaxReturnsService } from './taxReturns.service'
+import { TaxReturnsService } from './tax-returns.service'
 
 import { Query, Resolver } from '@nestjs/graphql'
 
