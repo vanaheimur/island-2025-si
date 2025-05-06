@@ -1,6 +1,7 @@
 import { CheckboxField } from '@/components/checkbox-field/checkbox-field'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
+import Link from 'next/link'
 export default function DataGathering() {
   return (
     <div className="flex flex-col">
@@ -36,8 +37,10 @@ export default function DataGathering() {
         Persónuupplýsingar úr Þjóðskrá
       </CheckboxField>
 
-      <Button className="ml-auto mt-8" size="lg">
-        Áfram í framtal
+      <Button className="ml-auto mt-8" size="lg" asChild>
+        <Link href="/umsokn/skattframtal/almennar-upplysingar">
+          Áfram í framtal
+        </Link>
       </Button>
     </div>
   )
