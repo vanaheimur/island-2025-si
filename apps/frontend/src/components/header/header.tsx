@@ -17,7 +17,14 @@ const Header = () => {
           <Logo iconOnly />
         </div>
         <div className="ml-auto flex gap-4">
-          <Input placeholder="Leitaðu á Ísland.is" className="max-md:hidden" />
+          <div className="relative">
+            <Input
+              placeholder="Leitaðu á Ísland.is"
+              size="sm"
+              className="max-md:hidden"
+            />
+            <SvgSearch className="size-4 fill-blue-400 absolute right-4 top-1/2 -translate-y-1/2" />
+          </div>
           <Button variant="utility">
             <span className="max-sm:hidden">Mínar síður</span>
             <SvgPerson className="size-4 fill-blue-400" />
