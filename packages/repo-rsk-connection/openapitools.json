@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.8.0",
+    "generators": {
+      "rskClient": {
+        "generatorName": "typescript-fetch",
+        "output": "#{cwd}/generated/rskClient",
+        "inputSpec": "${RSK_API_BASE_URL}/api-json",
+        "additionalProperties": {
+          "typescriptThreePlus": true
+        }
+      }
+    }
+  }
+}

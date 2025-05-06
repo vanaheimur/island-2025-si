@@ -29,6 +29,8 @@ coverage
 out/
 build
 dist
+generated
+schema.gql
 
 
 # Debug

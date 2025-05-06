@@ -2,11 +2,12 @@ import { {{pascalCase name}}Service } from './{{dashCase name}}.service'
 import config from './config'
 
 import { LoggerModule } from '@repo/logger'
+import { ConfigModule } from '@nestjs/config'
 import { Module } from '@nestjs/common'
 
 @Module({
   imports: [
-    KeyVaultConfigModule.forFeature(config),
+    ConfigModule.forFeature(config),
     LoggerModule,
   ],
   providers: [{{pascalCase name}}Service],
