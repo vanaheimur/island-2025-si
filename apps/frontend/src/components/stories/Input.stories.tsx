@@ -1,6 +1,5 @@
 import StoryWrapper from './StoryWrapper';
 import { Input } from '../ui/input';
-import { Label } from '../ui/label';
 
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -28,6 +27,12 @@ const meta: Meta<typeof Input> = {
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     readOnly: { control: 'boolean' },
+    label: { control: 'text' },
+    name: { control: 'text' },
+    size: { 
+      control: 'select', 
+      options: ['lg', 'sm'] 
+    },
   },
 };
 
@@ -36,49 +41,59 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter text here...',
     type: 'text',
+    placeholder: 'Enter text here...',
+    label: 'Text',
+    name: 'default-text'
   },
 };
 
 export const WithLabel: Story = {
-  render: () => (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor="email">Email</Label>
-      <Input type="email" id="email" placeholder="name@example.com" />
-    </div>
-  ),
+  args: {
+    type: 'email',
+    placeholder: 'name@example.com',
+    label: 'Email',
+    name: 'email'
+  },
 };
 
 export const Password: Story = {
   args: {
     type: 'password',
     placeholder: 'Enter password...',
+    label: 'Password',
+    name: 'password'
   },
 };
 
 export const Disabled: Story = {
   args: {
-    disabled: true,
+    type: 'text',
     placeholder: 'Disabled input',
+    disabled: true,
+    label: 'Disabled Input',
+    name: 'disabled-input'
   },
 };
 
 export const WithDefaultValue: Story = {
   args: {
+    type: 'text',
     defaultValue: 'Default value',
+    label: 'Input with Default Value',
+    name: 'default-value-input'
   },
 };
 
 export const WithError: Story = {
   render: () => (
     <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor="email-error">Email</Label>
       <Input 
         type="email" 
-        id="email-error" 
+        name="email-error"
         placeholder="name@example.com"
-        className="border-red-500" 
+        className="border-red-500"
+        label="Email" 
       />
       <p className="text-sm text-red-500">Please enter a valid email address.</p>
     </div>
@@ -88,10 +103,16 @@ export const WithError: Story = {
 export const WithIcon: Story = {
   render: () => (
     <div className="relative w-full max-w-sm">
-      <Input type="search" placeholder="Search..." className="pl-8" />
+      <Input 
+        type="search" 
+        name="search"
+        placeholder="Search..." 
+        className="pl-8"
+        label="Search" 
+      />
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500"
+        className="absolute left-2.5 top-9 h-4 w-4 text-gray-500"
         fill="none" 
         viewBox="0 0 24 24" 
         stroke="currentColor" 
