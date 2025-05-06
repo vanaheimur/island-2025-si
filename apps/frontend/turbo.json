@@ -4,10 +4,6 @@
   ],
   "tasks": {
     "build": {
-      "outputs": [
-        "dist/**",
-        "schema.gql"
-      ],
       "dependsOn": [
         "generate"
       ]
@@ -17,20 +13,12 @@
         "generate"
       ]
     },
-    "bundle": {
-      "dependsOn": [
-        "build"
-      ],
-      "outputs": [
-        "dist/compiled/**"
-      ]
-    },
     "generate": {
       "outputs": [
-        "src/graphql/generated/**"
+        "generated/**"
       ],
       "dependsOn": [
-        "^generate"
+        "backend#generate"
       ]
     }
   }
