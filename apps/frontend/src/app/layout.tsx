@@ -1,3 +1,5 @@
+import './globals.css'
+
 import { Footer } from '@/components/footer/footer'
 import Header from '@/components/header/header'
 import { Sidebar } from '@/components/sidebar/sidebar'
@@ -5,7 +7,6 @@ import { Toaster } from '@/components/ui/sonner'
 import SvgArrowBack from '@/icons/ArrowBack'
 import type { Metadata } from 'next'
 import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google'
-import './globals.css'
 
 const ibmPlexSans = IBM_Plex_Sans({
   variable: '--font-ibm-plex-sans',

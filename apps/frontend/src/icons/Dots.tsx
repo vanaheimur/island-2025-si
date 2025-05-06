@@ -1,5 +1,6 @@
-import * as React from 'react'
 import { SvgProps as SVGRProps } from '../Icon'
+
+import * as React from 'react'
 
 const SvgDots = ({
   title,

@@ -1,8 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Calendar } from '../ui/calendar';
-import { useState } from 'react';
-import { DateRange } from 'react-day-picker';
 import StoryWrapper from './StoryWrapper';
+import { Calendar } from '../ui/calendar';
+
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Calendar> = {
   title: 'UI/Calendar',

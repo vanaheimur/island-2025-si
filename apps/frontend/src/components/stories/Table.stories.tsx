@@ -1,4 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react'
+import StoryWrapper from './StoryWrapper'
+import { Button } from '../ui/button'
+import { Checkbox } from '../ui/checkbox'
 import {
   Table,
   TableBody,
@@ -9,9 +11,8 @@ import {
   TableHeader,
   TableRow,
 } from '../ui/table'
-import StoryWrapper from './StoryWrapper'
-import { Button } from '../ui/button'
-import { Checkbox } from '../ui/checkbox'
+
+import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Table> = {
   title: 'UI/Table',

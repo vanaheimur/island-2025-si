@@ -1,6 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../ui/button';
 import StoryWrapper from './StoryWrapper';
+import { Button } from '../ui/button';
+
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Button> = {
   title: 'UI/Button',

@@ -1,8 +1,9 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { Checkbox } from '../ui/checkbox';
 import StoryWrapper from './StoryWrapper';
+import { Checkbox } from '../ui/checkbox';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Label> = {
   title: 'UI/Label',

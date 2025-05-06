@@ -1,6 +1,6 @@
-import * as React from 'react'
-
 import type { SvgProps as SVGRProps } from '../types'
+
+import * as React from 'react'
 
 const SvgBankOutline = ({
   title,

@@ -1,9 +1,10 @@
+import StoryWrapper from './StoryWrapper'
+import { DatePicker, DateRangePicker, MonthPicker } from '../ui/date-picker'
+import { Label } from '../ui/label'
+
 import { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 import { DateRange } from 'react-day-picker'
-import { DatePicker, DateRangePicker, MonthPicker } from '../ui/date-picker'
-import { Label } from '../ui/label'
-import StoryWrapper from './StoryWrapper'
 
 const meta: Meta<typeof DatePicker> = {
   title: 'UI/DatePicker',

@@ -1,4 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
+import StoryWrapper from './StoryWrapper';
+import { Label } from '../ui/label';
 import { 
   Select,
   SelectContent,
@@ -8,8 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '../ui/select';
-import { Label } from '../ui/label';
-import StoryWrapper from './StoryWrapper';
+
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Select> = {
   title: 'UI/Select',

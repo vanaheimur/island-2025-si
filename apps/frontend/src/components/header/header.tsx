@@ -1,9 +1,10 @@
-import SvgMenu from '@/icons/Menu'
-import SvgPerson from '@/icons/Person'
-import SvgSearch from '@/icons/Search'
 import { Logo } from '../logo'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
+
+import SvgMenu from '@/icons/Menu'
+import SvgPerson from '@/icons/Person'
+import SvgSearch from '@/icons/Search'
 
 const Header = () => {
   return (

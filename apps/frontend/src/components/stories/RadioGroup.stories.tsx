@@ -1,7 +1,8 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
-import { Label } from '../ui/label';
 import StoryWrapper from './StoryWrapper';
+import { Label } from '../ui/label';
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
+
+import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'UI/RadioGroup',
