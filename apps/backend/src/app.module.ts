@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module'
 import config from './config'
 import { NationalRegistryModule } from './national-registry/national-registry.module'
 import { TaxReturnsModule } from './tax-returns/tax-returns.module'
@@ -22,6 +23,7 @@ import { LoggerModule } from '@repo/logger'
       autoSchemaFile: './schema.gql',
     }),
     NationalRegistryModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
