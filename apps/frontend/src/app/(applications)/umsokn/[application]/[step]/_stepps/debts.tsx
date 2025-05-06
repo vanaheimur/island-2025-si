@@ -4,10 +4,13 @@ import Link from 'next/link'
 
 export default function Debts() {
   return (
-    <div>
-      <Text variant="h2">Skuldir</Text>
+    <div className="flex flex-col gap-20">
+      <div>
+        <Text variant="h2">5.1 - Vaxtagjöld</Text>
+        <Text variant="sm">Vaxtagjöld vegna íbúðarhúsnæðis til eigin nota.</Text>
+      </div>
 
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/skattframtal/eignir">Til baka</Link>
         </Button>

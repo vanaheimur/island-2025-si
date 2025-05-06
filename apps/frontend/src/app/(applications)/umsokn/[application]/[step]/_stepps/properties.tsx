@@ -4,10 +4,13 @@ import Link from 'next/link'
 
 export default function Properties() {
   return (
-    <div>
-      <Text variant="h2">Eignir</Text>
+    <div className="flex flex-col gap-20">
+      <div>
+        <Text variant="h2">4.1 - Fasteignir</Text>
+        <Text variant="sm">Innlendar fasteignir skv. fasteignamati.</Text>
+      </div>
 
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/skattframtal/tekjur">Til baka</Link>
         </Button>

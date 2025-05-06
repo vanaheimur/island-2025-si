@@ -2,14 +2,16 @@ import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import Link from 'next/link'
 
-export default function Debts() {
+export default function Done() {
   return (
-    <div>
-      <Text variant="h2">Sjúddírarirei.</Text>
-      <Text variant="h2">Lokaskjár.</Text>
-      <Text variant="h1">Sýna bráðabirgðaútreikning?</Text>
+    <div className="flex flex-col gap-20">
+      <div>
+        <Text variant="h2">Sjúddírarirei.</Text>
+        <Text variant="h2">Lokaskjár.</Text>
+        <Text variant="h1">Sýna bráðabirgðaútreikning?</Text>
+      </div>
 
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/skattframtal/skuldir">Til baka</Link>
         </Button>

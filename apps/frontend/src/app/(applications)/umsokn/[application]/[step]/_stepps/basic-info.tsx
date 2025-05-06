@@ -4,10 +4,12 @@ import Link from 'next/link'
 
 export default function BasicInfo() {
   return (
-    <div>
-      <Text variant="h2">Almennar upplysingar</Text>
+    <div className="flex flex-col gap-20">
+      <div>
+        <Text variant="h2">Jökull Þórðarson</Text>
+      </div>
 
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/skattframtal/upplysingasofnun">Til baka</Link>
         </Button>
