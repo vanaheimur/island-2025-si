@@ -6,7 +6,7 @@ const config = () => {
     showPlayground:
       process.env.NODE_ENV !== 'production' ||
       !!process.env.SHOW_ADMIN_PLAYGROUND,
-    generateSchemaFiles: process.env.GENERATE_SCHEMA_FILES === 'true',
+    generateSchemaFiles: process.env.GENERATE_SCHEMA_FILES === '1',
   }
 
   const schema = Joi.object({

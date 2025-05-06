@@ -10,6 +10,8 @@ generates:
       - typescript-graphql-request
     config:
       strictScalars: true
+      scalars:
+        DateTime: string
       exportFragmentSpreadSubTypes: true
       useTypeImports: true
       dedupeFragments: true
