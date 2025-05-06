@@ -1,6 +1,5 @@
-import StoryWrapper from './StoryWrapper';
-import { Label } from '../ui/label';
-import { 
+import { Label } from '../ui/label'
+import {
   Select,
   SelectContent,
   SelectGroup,
@@ -8,9 +7,10 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
+} from '../ui/select'
+import StoryWrapper from './StoryWrapper'
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
 const meta: Meta<typeof Select> = {
   title: 'UI/Select',
@@ -30,15 +30,15 @@ const meta: Meta<typeof Select> = {
     defaultValue: { control: 'text' },
     disabled: { control: 'boolean' },
   },
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Select>;
+export default meta
+type Story = StoryObj<typeof Select>
 
 export const Default: Story = {
   render: () => (
     <Select>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[280px]" label="Favorite fruit" size="sm">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -49,14 +49,14 @@ export const Default: Story = {
       </SelectContent>
     </Select>
   ),
-};
+}
 
 export const WithLabel: Story = {
   render: () => (
     <div className="grid w-full gap-1.5">
       <Label htmlFor="fruit">Favorite fruit</Label>
       <Select>
-        <SelectTrigger id="fruit" className="w-[180px]">
+        <SelectTrigger id="fruit" className="w-[280px]">
           <SelectValue placeholder="Select a fruit" />
         </SelectTrigger>
         <SelectContent>
@@ -68,7 +68,7 @@ export const WithLabel: Story = {
       </Select>
     </div>
   ),
-};
+}
 
 export const Disabled: Story = {
   render: () => (
@@ -82,7 +82,7 @@ export const Disabled: Story = {
       </SelectContent>
     </Select>
   ),
-};
+}
 
 export const WithGroups: Story = {
   render: () => (
@@ -113,7 +113,7 @@ export const WithGroups: Story = {
       </SelectContent>
     </Select>
   ),
-};
+}
 
 // Simplifying to avoid React hooks in Storybook stories
 export const Controlled: Story = {
@@ -130,8 +130,8 @@ export const Controlled: Story = {
           <SelectItem value="yellow">Yellow</SelectItem>
         </SelectContent>
       </Select>
-      
+
       <div className="text-sm">Selected value: blue</div>
     </div>
   ),
-};
+}
