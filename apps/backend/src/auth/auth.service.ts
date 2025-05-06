@@ -13,9 +13,17 @@ export class AuthService {
   ) {}
 
   public async createAuthToken(nationalId: string) {
-    const person = await this.nationalRegistryService.getPersonById(nationalId)
+    // In a real application this world be created using other means
+    const systemToken = this.jwtService.sign({
+      sub: nationalId,
+    })
 
-    // In a real application you would separate logs into audit and system logs
+    const person = await this.nationalRegistryService.getPersonById(
+      systemToken,
+      nationalId,
+    )
+
+    // In a real application we would separate logs into audit and system logs
     this.logger.info('Authenticating user', {
       nationalId,
     })
