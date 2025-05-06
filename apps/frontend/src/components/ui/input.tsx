@@ -10,15 +10,17 @@ function Input({
   ...props
 }: Omit<React.ComponentProps<'input'>, 'size'> & {
   label?: string
-  size?: 'lg' | 'sm'
+  size?: 'lg' | 'md' | 'sm'
 }) {
   return (
     <div
       className={clsx(
         'flex flex-col gap-2 relative',
         {
-          'h-20 border border-blue-200 bg-blue-100 rounded-[8px] p-2 focus-within:border-mint-400 transition focus-within:ring-mint-400 focus-within:ring-[3px] ring-inset':
-            size === 'lg',
+          'border border-blue-200 bg-blue-100 rounded-[8px] p-2 focus-within:border-mint-400 transition focus-within:ring-mint-400 focus-within:ring-[3px] ring-inset':
+            size === 'lg' || size === 'md',
+          'h-20': size === 'lg',
+          'h-16': size === 'md',
         },
         className,
       )}
@@ -42,6 +44,19 @@ function Input({
           className={clsx(
             'w-full pl-4 relative z-10 focus:ring-0 focus:ring-offset-0 outline-none',
             getTextStyles({ variant: 'h3' }),
+            className,
+          )}
+          {...props}
+        />
+      )}
+      {size === 'md' && (
+        <input
+          id={props.name}
+          type={type}
+          data-slot="input"
+          className={clsx(
+            'w-full pl-4 relative z-10 focus:ring-0 focus:ring-offset-0 outline-none',
+            getTextStyles({ variant: 'h5' }),
             className,
           )}
           {...props}
