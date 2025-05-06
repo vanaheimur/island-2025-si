@@ -5674,6 +5674,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@repo/nr-connection@workspace:*, @repo/nr-connection@workspace:packages/repo-nr-connection":
+  version: 0.0.0-use.local
+  resolution: "@repo/nr-connection@workspace:packages/repo-nr-connection"
+  dependencies:
+    "@nestjs/cli": "npm:11.0.5"
+    "@nestjs/common": "npm:11.0.11"
+    "@nestjs/config": "npm:4.0.1"
+    "@nestjs/core": "npm:11.0.11"
+    "@openapitools/openapi-generator-cli": "npm:2.20.0"
+    "@repo/eslint-config": "workspace:*"
+    "@repo/logger": "workspace:*"
+    "@repo/typescript-config": "workspace:*"
+    reflect-metadata: "npm:0.2.2"
+    rimraf: "npm:6.0.1"
+    rxjs: "npm:7.8.1"
+  languageName: unknown
+  linkType: soft
+
 "@repo/rsk-connection@workspace:*, @repo/rsk-connection@workspace:packages/repo-rsk-connection":
   version: 0.0.0-use.local
   resolution: "@repo/rsk-connection@workspace:packages/repo-rsk-connection"
@@ -9355,6 +9373,7 @@ __metadata:
     "@repo/eslint-config": "workspace:*"
     "@repo/logger": "workspace:*"
     "@repo/nest-infra-server": "workspace:*"
+    "@repo/nr-connection": "workspace:*"
     "@repo/rsk-connection": "workspace:*"
     "@repo/typescript-config": "workspace:*"
     "@swc/cli": "npm:0.6.0"

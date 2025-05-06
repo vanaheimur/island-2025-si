@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "//"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "generate"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "generate"
+      ]
+    },
+    "generate": {
+      "outputs": [
+        "generated/**"
+      ]
+    }
+  }
+}
