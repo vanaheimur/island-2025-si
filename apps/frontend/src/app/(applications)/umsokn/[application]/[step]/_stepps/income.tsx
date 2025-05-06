@@ -6,58 +6,58 @@ export default function Income() {
   return (
     <div className="flex flex-col gap-20">
       <div>
-        <Text variant="h2">2.1 - Tekjur frá launagreiðenda</Text>
-        <Text variant="sm">Laun og launatengdar greiðslur.</Text>
+        <Text variant="h2" className="mb-4">2.1 - Tekjur frá launagreiðenda</Text>
+        <Text variant="sm" className="mb-4">Laun og launatengdar greiðslur.</Text>
       </div>
 
       <div>
-        <Text variant="h2">2.2 - Samsköttun</Text>
-        <Text variant="sm">
+        <Text variant="h2" className="mb-4">2.2 - Samsköttun</Text>
+        <Text variant="sm" className="mb-4">
           Einstaklingar í óvígðri sambúð sem uppfylla skilyrði, geta óskað eftir
           samsköttun með að merkja í reitinn.
         </Text>
       </div>
 
       <div>
-        <Text variant="h2">
+        <Text variant="h2" className="mb-4">
           2.3 - Lífeyrisgreiðslur, styrkir, greiðslur frá Tryggingastofnun o.fl.
         </Text>
-        <Text variant="sm">
+        <Text variant="sm" className="mb-4">
           Hér koma t.d. greiðslur úr almennum lífeyrissjóðum, atvinnuleysisbætur
           og félagsleg aðstoð.
         </Text>
       </div>
 
       <div>
-        <Text variant="h2">
+        <Text variant="h2" className="mb-4">
           2.4 - Dagpeningar, ökutækjastyrkur og önnur hlunnindi
         </Text>
-        <Text variant="sm">
+        <Text variant="sm" className="mb-4">
           Hér koma dagpeningagreiðslur, ökutækjastyrkir og önnur hlunnindi.
         </Text>
       </div>
 
       <div>
-        <Text variant="h2">2.5 - Greinargerð um kaup og sölu á eignum</Text>
-        <Text variant="sm">
+        <Text variant="h2" className="mb-4">2.5 - Greinargerð um kaup og sölu á eignum</Text>
+        <Text variant="sm" className="mb-4">
           Tilgreinið kaup og sölu hvers konar lausafjár, ökutækja, hjólhýsa
           o.s.fv.
         </Text>
       </div>
 
       <div>
-        <Text variant="h2">2.6 - Erlendar tekjur</Text>
-        <Text variant="sm">Erlendar tekjur, laun o.s.fv.</Text>
+        <Text variant="h2" className="mb-4">2.6 - Erlendar tekjur</Text>
+        <Text variant="sm" className="mb-4">Erlendar tekjur, laun o.s.fv.</Text>
       </div>
 
       <div>
-        <Text variant="h2">2.7 - Skattfrjálsar tekjur</Text>
-        <Text variant="sm">Erlendar tekjur, laun o.s.fv.</Text>
+        <Text variant="h2" className="mb-4">2.7 - Skattfrjálsar tekjur</Text>
+        <Text variant="sm" className="mb-4">Erlendar tekjur, laun o.s.fv.</Text>
       </div>
 
       <div>
-        <Text variant="h2">2.10 - Hvað greiddir þú háa staðgreiðslu</Text>
-        <Text variant="sm">
+        <Text variant="h2" className="mb-4">2.10 - Hvað greiddir þú háa staðgreiðslu</Text>
+        <Text variant="sm" className="mb-4">
           Staðgreiðsla af öðrum tekjum en fjármagnstekjum
         </Text>
       </div>

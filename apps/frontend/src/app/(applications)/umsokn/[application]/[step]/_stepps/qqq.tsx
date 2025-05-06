@@ -6,8 +6,8 @@ export default function Done() {
   return (
     <div className="flex flex-col gap-20">
       <div>
-        <Text variant="h2">Sjúddírarirei.</Text>
-        <Text variant="h2">Lokaskjár.</Text>
+        <Text variant="h2" className="mb-4">Sjúddírarirei.</Text>
+        <Text variant="h2" className="mb-4">Lokaskjár.</Text>
         <Text variant="h1">Sýna bráðabirgðaútreikning?</Text>
       </div>
 
