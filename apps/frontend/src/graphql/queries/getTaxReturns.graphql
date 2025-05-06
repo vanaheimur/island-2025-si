@@ -1,0 +1,7 @@
+query getTaxReturns {
+  getTaxReturns {
+    id
+    status
+    year
+  }
+}

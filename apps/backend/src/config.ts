@@ -6,14 +6,11 @@ const config = () => {
     showPlayground:
       process.env.NODE_ENV !== 'production' ||
       !!process.env.SHOW_ADMIN_PLAYGROUND,
-    autoSchemaFile:
-      process.env.AUTO_SCHEMA_FILE === 'true' ? true : 'schema.gql',
-    generateSchemaFiles: process.env.GENERATE_SCHEMA_FILES === 'true',
+    generateSchemaFiles: process.env.GENERATE_SCHEMA_FILES === '1',
   }
 
   const schema = Joi.object({
     showPlayground: Joi.boolean().required(),
-    autoSchemaFile: [Joi.string().required(), Joi.boolean().required()],
     generateSchemaFiles: Joi.boolean().required(),
   })
 

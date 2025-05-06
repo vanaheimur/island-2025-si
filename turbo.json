@@ -26,6 +26,7 @@
         "^check-types"
       ]
     },
+    "generate": {},
     "dev": {
       "dependsOn": [
         "^build"
@@ -44,6 +45,7 @@
     "SHOW_ADMIN_PLAYGROUND",
     "AUTO_SCHEMA_FILE",
     "GENERATE_SCHEMA_FILES",
-    "RSK_API_BASE_URL"
+    "RSK_API_BASE_URL",
+    "BACKEND_BASE_API_URL"
   ]
 }
