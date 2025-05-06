@@ -48,6 +48,6 @@
     "RSK_API_BASE_URL",
     "NR_API_BASE_URL",
     "BACKEND_BASE_API_URL",
-    "APP_SECRET"
+    "AUTH_TOKEN_SECRET"
   ]
 }
