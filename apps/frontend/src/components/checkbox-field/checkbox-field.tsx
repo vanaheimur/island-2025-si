@@ -10,12 +10,14 @@ export const CheckboxField = ({
   name: string
 } & React.ComponentProps<typeof Checkbox>) => {
   return (
-    <Label
-      htmlFor={name}
-      className="flex items-center gap-4 px-7 py-6 border border-blue-200 rounded-[8px] bg-blue-100 cursor-pointer"
-    >
+    <div className="flex items-center gap-4 px-7 py-6 border border-blue-200 rounded-[8px] bg-blue-100 relative">
       <Checkbox id={name} {...props} />
-      {children}
-    </Label>
+      <Label
+        htmlFor={name}
+        className="cursor-pointer after:inset-0 after:absolute"
+      >
+        {children}
+      </Label>
+    </div>
   )
 }
