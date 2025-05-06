@@ -77,10 +77,10 @@
   --rounded-none: 0rem;
 
   /* Line heights */
-  --leading-compact: 1rem;
-  --leading-normal: 1.25rem;
-  --leading-spacious: 1.5rem;
-  --leading-extra: 2rem;
+  --leading-compact: 1;
+  --leading-normal: 1.25;
+  --leading-spacious: 1.5;
+  --leading-extra: 2;
 
   /* Typography - Desktop */
   /* Headings */
@@ -97,15 +97,15 @@
 
   /* Paragraphs */
   --text-lg: 1.5rem;
-  --leading-lg: 2.125rem;
+  --leading-lg: 2.125;
   --text-md: 1.125rem;
-  --leading-md: 1.75rem;
+  --leading-md: 1.75;
   --text-sm: 1rem;
-  --leading-sm: 1.625rem;
+  --leading-sm: 1.625;
   --text-xs: 0.875rem;
-  --leading-xs: 1.5rem;
+  --leading-xs: 1.5;
   --text-eyebrow: 0.875rem;
-  --leading-eyebrow: 1rem;
+  --leading-eyebrow: 1;
 
   /* Typography - Mobile */
   --text-mobile-h1: 2rem;
@@ -132,12 +132,6 @@
 
   --color-background: var(--color-white);
   --color-foreground: var(--color-dark-400);
-}
-
-body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans);
 }
 
 /* Animations */
@@ -206,7 +200,7 @@ body {
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --foreground: var(--color-dark-400);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -221,7 +215,7 @@ body {
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --input: var(--color-blue-200);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -243,6 +237,10 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
+}
+
+.container {
+  @apply mx-auto max-w-[1440px] px-6 lg:px-12;
 }
