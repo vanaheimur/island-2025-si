@@ -33,6 +33,7 @@
     "@nestjs/swagger": "11.0.3",
     "@repo/logger": "workspace:*",
     "@repo/nest-infra-server": "workspace:*",
+    "@repo/nr-connection": "workspace:*",
     "@repo/rsk-connection": "workspace:*",
     "cross-env": "7.0.3",
     "graphql": "16.11.0",

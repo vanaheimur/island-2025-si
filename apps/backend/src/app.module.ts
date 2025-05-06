@@ -1,5 +1,6 @@
 import config from './config'
-import { TaxReturnsModule } from './taxReturns/taxReturns.module'
+import { NationalRegistryModule } from './national-registry/national-registry.module'
+import { TaxReturnsModule } from './tax-returns/tax-returns.module'
 
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
@@ -20,6 +21,7 @@ import { LoggerModule } from '@repo/logger'
       playground: config().app.showPlayground,
       autoSchemaFile: './schema.gql',
     }),
+    NationalRegistryModule,
   ],
 })
 export class AppModule {}
