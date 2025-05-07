@@ -38,7 +38,7 @@ export default function DataGathering() {
       </CheckboxField>
 
       <Button className="ml-auto mt-8" size="lg" asChild>
-        <Link href="/umsokn/skattframtal/almennar-upplysingar">
+        <Link href="/umsokn/framtal/almennar-upplysingar">
           Áfram í framtal
         </Link>
       </Button>

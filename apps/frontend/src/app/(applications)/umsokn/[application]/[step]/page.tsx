@@ -33,7 +33,7 @@ const NoStep = () => (
       {Object.keys(steps).map((step) => (
         <li key={step} className="space-y-2">
           <Link
-            href={`/umsokn/skattframtal/${step}`}
+            href={`/umsokn/framtal/${step}`}
             className="underline text-blue-400"
           >
             umsokn/skattframtal/{step}

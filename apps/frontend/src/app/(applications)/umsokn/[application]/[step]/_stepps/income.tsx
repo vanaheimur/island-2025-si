@@ -64,10 +64,10 @@ export default function Income() {
 
       <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
-          <Link href="/umsokn/skattframtal/almennar-upplysingar">Til baka</Link>
+          <Link href="/umsokn/framtal/almennar-upplysingar">Til baka</Link>
         </Button>
         <Button size="lg">
-          <Link href="/umsokn/skattframtal/eignir">Halda áfram í eignir</Link>
+          <Link href="/umsokn/framtal/eignir">Halda áfram í eignir</Link>
         </Button>
       </div>
     </div>

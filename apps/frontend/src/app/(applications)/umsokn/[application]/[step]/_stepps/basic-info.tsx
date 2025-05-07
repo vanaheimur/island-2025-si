@@ -72,13 +72,13 @@ export default function BasicInfo() {
 
       <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
-          <Link href="/umsokn/skattframtal/upplysingasofnun">Til baka</Link>
+          <Link href="/umsokn/framtal/upplysingasofnun">Til baka</Link>
         </Button>
         <form.AppForm>
           <form.SubscribeButton label="Submit" />
         </form.AppForm>
         <Button size="lg">
-          <Link href="/umsokn/skattframtal/tekjur">Halda áfram í tekjur</Link>
+          <Link href="/umsokn/framtal/tekjur">Halda áfram í tekjur</Link>
         </Button>
       </div>
     </form>

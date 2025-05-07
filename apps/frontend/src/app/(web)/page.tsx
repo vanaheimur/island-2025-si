@@ -23,7 +23,9 @@ export default function Home() {
           ▶︎
         </button>
       </div>
+
       <CTA />
+
       <Text variant="h2" as="h2">
         Hvað er skattframtal?
       </Text>
@@ -191,7 +193,7 @@ const CTA = () => (
     </Text>
     <div className="md:ml-auto">
       <Button size="lg" asChild>
-        <Link href="/umsokn/skattframtal/upplysingasofnun">
+        <Link href="/umsokn/framtal/upplysingasofnun">
           Opna <SvgOpenOutline />
         </Link>
       </Button>

@@ -13,7 +13,7 @@ export default function Done() {
 
       <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
-          <Link href="/umsokn/skattframtal/skuldir">Til baka</Link>
+          <Link href="/umsokn/framtal/skuldir">Til baka</Link>
         </Button>
       </div>
     </div>

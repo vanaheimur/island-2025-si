@@ -33,10 +33,10 @@ export default function Debts() {
 
       <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
-          <Link href="/umsokn/skattframtal/eignir">Til baka</Link>
+          <Link href="/umsokn/framtal/eignir">Til baka</Link>
         </Button>
         <Button size="lg">
-          <Link href="/umsokn/skattframtal/sjuddirarirei">
+          <Link href="/umsokn/framtal/sjuddirarirei">
             Halda áfram í sjuddirarirei
           </Link>
         </Button>

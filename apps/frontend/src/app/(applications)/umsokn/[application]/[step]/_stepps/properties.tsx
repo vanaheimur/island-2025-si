@@ -34,10 +34,10 @@ export default function Properties() {
 
       <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
-          <Link href="/umsokn/skattframtal/tekjur">Til baka</Link>
+          <Link href="/umsokn/framtal/tekjur">Til baka</Link>
         </Button>
         <Button size="lg">
-          <Link href="/umsokn/skattframtal/skuldir">Halda áfram í skuldir</Link>
+          <Link href="/umsokn/framtal/skuldir">Halda áfram í skuldir</Link>
         </Button>
       </div>
     </div>
