@@ -1,4 +1,5 @@
 'use client'
+
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
@@ -178,7 +179,7 @@ export default function BasicInfo() {
           <Link href="/umsokn/framtal/upplysingasofnun">Til baka</Link>
         </Button>
         <form.AppForm>
-          <form.SubscribeButton label="Halda áfram í tekjur" />
+          <form.SubscribeButton label="Áfram í tekjur" />
         </form.AppForm>
       </div>
     </form>

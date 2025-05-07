@@ -272,20 +272,38 @@ export default function Properties() {
 
       <div>
         <Text variant="h2" className="mb-4">
-          4.4 - Aðrar eignir
+          4.4 - Hlutabréf
         </Text>
         <Text variant="sm" className="mb-4">
-          Til dæmis tjaldvagn, hjólhýsi, listaverk o.s.fv.
+          Skráð og óskráð hlutabréf framteljanda.
         </Text>
+
+        <div className="flex flex-col items-center gap-6 p-6 mb-4 border-2 border-dashed border-blue-300 rounded-lg">
+          <Text variant="h4">Dragðu skjöl hingað til að hlaða upp</Text>
+          <Text variant="sm" className="text-center">
+            Þú getur hlaðið inn yfirliti um hlutabréfaeign þína á xls, csv eða
+            pdf sniði og við reiknum út hagnað / tap ársins fyrir þig.
+          </Text>
+          <Button variant="outline">Velja skjöl til að hlaða upp</Button>
+        </div>
       </div>
 
       <div>
         <Text variant="h2" className="mb-4">
-          4.5 - Hrein eign samkvæmt efnahagsreikningi
+          4.5 - Rafmyntir
         </Text>
         <Text variant="sm" className="mb-4">
-          Hrein eign samkvæmt samræmingarblaði RSK 4.05
+          Rafmynta eign í rafmyntkauphöllum og köldum veskjum.
         </Text>
+
+        <div className="flex flex-col items-center gap-6 p-6 mb-4 border-2 border-dashed border-blue-300 rounded-lg">
+          <Text variant="h4">Dragðu skjöl hingað til að hlaða upp</Text>
+          <Text variant="sm" className="text-center">
+            Þú getur hlaðið inn yfirliti um hlutabréfaeign þína á xls, csv eða
+            pdf sniði og við reiknum út hagnað / tap ársins fyrir þig.
+          </Text>
+          <Button variant="outline">Velja skjöl til að hlaða upp</Button>
+        </div>
       </div>
 
       <div className="flex justify-between">
@@ -293,7 +311,7 @@ export default function Properties() {
           <Link href="/umsokn/framtal/tekjur">Til baka</Link>
         </Button>
         <Button size="lg">
-          <Link href="/umsokn/framtal/skuldir">Halda áfram í skuldir</Link>
+          <Link href="/umsokn/framtal/skuldir">Áfram í skuldir</Link>
         </Button>
       </div>
     </form>
