@@ -15,7 +15,7 @@ export function NumericField({
   variant?: 'default' | 'outline' | 'ghost' | 'utility' | 'destructive'
 } & Omit<
   React.ComponentProps<typeof NumericFormat>,
-  'customInput' | 'value' | 'onChange'
+  'customInput' | 'value' | 'onChange' | 'size'
 >) {
   // The `Field` infers that it should have a `value` type of `string`
   const field = useFieldContext<number | undefined>()
