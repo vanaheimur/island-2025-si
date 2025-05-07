@@ -1,4 +1,5 @@
 import { Stepper } from '@/components/stepper/stepper'
+import Image from 'next/image'
 import Link from 'next/link'
 import BasicInfo from './_stepps/basic-info'
 import DataGathering from './_stepps/data-gathering'
@@ -6,6 +7,7 @@ import Debts from './_stepps/debts'
 import Income from './_stepps/income'
 import Properties from './_stepps/properties'
 import Done from './_stepps/qqq'
+import skatturinn from './assets/skatturinn.svg'
 
 type Props = {
   params: {
@@ -58,7 +60,7 @@ export default async function StepPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-3 pt-20">
+      <div className="col-span-12 md:col-span-3 pt-4 flex flex-col">
         <Stepper
           steps={[
             {
@@ -103,6 +105,7 @@ export default async function StepPage({ params }: Props) {
             },
           ]}
         />
+        <Image src={skatturinn} alt="" className="mt-auto mb-4" />
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import Header from '@/components/header/header'
 
-export default function ApplicationLayout({
+export default function MyPagesLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -10,7 +10,7 @@ export default function ApplicationLayout({
       <div className="bg-white">
         <Header />
       </div>
-      <div className="bg-blueberry-100 grow pt-8 pb-10">
+      <div className="grow pt-8 pb-10">
         <div className="container">{children}</div>
       </div>
     </>

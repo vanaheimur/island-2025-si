@@ -45,6 +45,7 @@ export default function BasicInfo() {
               <field.PatternField
                 label="Kennitala framteljanda"
                 format="###### ####"
+                required
               />
             )}
           />
