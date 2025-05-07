@@ -6,14 +6,30 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Text } from '@/components/ui/text'
+import { graphqlClient } from '@/graphql/client'
 
 export default function Auth() {
   const form = useAppForm({
     defaultValues: {
-      phone: '',
+      nationalId: '',
     },
     onSubmit: (values) => {
-      console.log('phone:', values.value.phone, typeof values.value.phone)
+      console.log('values:', values)
+
+      if (!values.value.nationalId) {
+        console.log('error: nationalId is required')
+        return
+      }
+
+      if (!/^\d{10}$/.test(values.value.nationalId)) {
+        console.log('error: nationalId is not valid:', values.value.nationalId)
+        return
+      }
+
+      graphqlClient
+        .login({ nationalId: values.value.nationalId })
+        .then((res) => console.log('res:', res))
+        .catch((err) => console.log('err:', err))
     },
   })
 
@@ -42,12 +58,12 @@ export default function Auth() {
             }}
           >
             <form.AppField
-              name="phone"
+              name="nationalId"
               children={(field) => (
                 <field.PatternField
-                  label="Símanúmer"
-                  format="###-####"
-                  placeholder="000-0000"
+                  label="Kennitala"
+                  format="######-####"
+                  placeholder="000000-0000"
                 />
               )}
             />
@@ -70,7 +86,7 @@ export default function Auth() {
           </Text>
 
           <Button variant="outline" className="w-full">
-            Auðkennisappinu
+            Skilríki í síma
           </Button>
           <Button variant="outline" className="w-full">
             Skilríki á korti

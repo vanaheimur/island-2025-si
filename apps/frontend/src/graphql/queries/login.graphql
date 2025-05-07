@@ -1,0 +1,3 @@
+mutation login($nationalId: String!) {
+  login(input: { nationalId: $nationalId })
+}
