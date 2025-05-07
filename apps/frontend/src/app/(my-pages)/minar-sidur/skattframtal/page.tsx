@@ -1,18 +1,52 @@
-import Header from '@/components/header/header'
+import { Card } from '@/components/card/card'
+import { Text } from '@/components/ui/text'
 
-export default function MyPagesLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function MyPages() {
   return (
-    <>
-      <div className="bg-white">
-        <Header />
+    <div className="">
+      <Text variant="h3" as="h1" className="mb-4">
+        Mín framtöl
+      </Text>
+      <Text variant="md">
+        Hér getur þú séð upplýsingar um framtöl sem þú hefur aðgang að.
+      </Text>
+      <div className="mt-12">
+        <Text variant="xs" className="font-semibold mb-8">
+          Virk framtöl
+        </Text>
+        <Card date="08.05.2025" buttonLink="/umsokn/framtal/upplysingasofnun" />
       </div>
-      <div className="grow pt-8 pb-10">
-        <div className="container">{children}</div>
+      <div className="mt-12">
+        <Text variant="xs" className="font-semibold mb-8">
+          Eldri framtöl
+        </Text>
+        <div className="flex flex-col gap-4">
+          <Card
+            date="08.05.2024"
+            statusLabel="Framtal skilað"
+            progressWidth="100%"
+            progressText="Þú hefur klárað 6 af 6 skrefum"
+            buttonLabel="Skoða framtal"
+            heading="Skattframtal skil 2024"
+          />
+          <Card
+            date="08.05.2023"
+            statusLabel="Framtal skilað"
+            progressWidth="100%"
+            progressText="Þú hefur klárað 6 af 6 skrefum"
+            buttonLabel="Skoða framtal"
+            heading="Skattframtal skil 2023"
+          />
+          <Card
+            date="08.05.2022"
+            statusLabel="Framtal skilað"
+            progressWidth="100%"
+            progressText="Þú hefur klárað 6 af 6 skrefum"
+            buttonLabel="Skoða framtal"
+            heading="Skattframtal skil 2022"
+          />
+        </div>
       </div>
-    </>
+    </div>
   )
 }
