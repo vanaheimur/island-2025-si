@@ -6,14 +6,26 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Text } from '@/components/ui/text'
+import { graphqlClient } from '@/graphql/client'
+import { useRouter } from 'next/navigation'
+import { z } from 'zod'
 
 export default function Auth() {
+  const router = useRouter()
+
   const form = useAppForm({
     defaultValues: {
-      phone: '',
+      nationalId: '',
     },
     onSubmit: (values) => {
-      console.log('phone:', values.value.phone, typeof values.value.phone)
+      graphqlClient
+        .login({ nationalId: values.value.nationalId })
+        .then((res) => {
+          if (res.login) {
+            router.push('/umsokn/framtal/upplysingasofnun')
+          }
+        })
+        .catch((err) => console.log('err:', err))
     },
   })
 
@@ -42,12 +54,15 @@ export default function Auth() {
             }}
           >
             <form.AppField
-              name="phone"
+              name="nationalId"
+              validators={{
+                onChange: z.string().min(10, 'Kennitala er nauðsynleg'),
+              }}
               children={(field) => (
                 <field.PatternField
-                  label="Símanúmer"
-                  format="###-####"
-                  placeholder="000-0000"
+                  label="Kennitala"
+                  format="######-####"
+                  placeholder="000000-0000"
                 />
               )}
             />
@@ -70,7 +85,7 @@ export default function Auth() {
           </Text>
 
           <Button variant="outline" className="w-full">
-            Auðkennisappinu
+            Skilríki í síma
           </Button>
           <Button variant="outline" className="w-full">
             Skilríki á korti
