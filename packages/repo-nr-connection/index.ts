@@ -1,4 +1,3 @@
 export * from './constants'
-export { PersonsApi } from './generated/nrClient'
-export * from './generated/nrClient/models'
+export * from './generated/nrClient'
 export * from './nr-connection.module'

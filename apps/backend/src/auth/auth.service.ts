@@ -30,7 +30,7 @@ export class AuthService {
 
     return this.jwtService.sign({
       sub: nationalId,
-      name: person.name,
+      name: person.data.name,
     })
   }
 }

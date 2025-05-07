@@ -5,8 +5,6 @@ export class IncomeOutput {
   id!: number
   description!: string
   amount!: number
-  createdAt!: Date
-  updatedAt!: Date
   userId!: number
   incomeCategoryId!: number
 

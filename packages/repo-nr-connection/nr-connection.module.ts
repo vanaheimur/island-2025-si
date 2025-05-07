@@ -16,7 +16,6 @@ import { LoggerModule } from '@repo/logger'
           basePath: configService.getOrThrow('nrConnection.baseUrl', {
             infer: true,
           }),
-          fetchApi: fetch,
         })
         return new PersonsApi(config)
       },

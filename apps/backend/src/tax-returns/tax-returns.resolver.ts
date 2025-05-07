@@ -9,11 +9,7 @@ import { Auth } from '../auth/decorators/auth.decorator'
 import { CurrentUser } from '../auth/decorators/currentUser.decorator'
 import { type User } from '../auth/types'
 
-<<<<<<< Updated upstream
-import { Query, Resolver } from '@nestjs/graphql'
-=======
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
->>>>>>> Stashed changes
 
 @Resolver()
 export class TaxReturnsResolver {
@@ -24,25 +20,20 @@ export class TaxReturnsResolver {
     @CurrentUser() user: User,
     @Auth() auth: string,
   ): Promise<TaxReturnOutput> {
-    const taxReturn = await this.taxReturnsService.getSingleTaxReturn(
-      auth,
-      user.nationalId,
-    )
+    const taxReturn = await this.taxReturnsService.getSingleTaxReturn(auth)
 
     return new TaxReturnOutput({
-      ...taxReturn,
-      incomes: taxReturn.incomes.map((income) => new IncomeOutput(income)),
-      assets: taxReturn.assets.map((asset) => new AssetOutput(asset)),
-      mortgages: taxReturn.mortgages.map(
+      ...taxReturn.data,
+      incomes: taxReturn.data.incomes.map((income) => new IncomeOutput(income)),
+      assets: taxReturn.data.assets.map((asset) => new AssetOutput(asset)),
+      mortgages: taxReturn.data.mortgages.map(
         (mortgage) => new MortgageOutput(mortgage),
       ),
-      otherDebts: taxReturn.otherDebts.map(
+      otherDebts: taxReturn.data.otherDebts.map(
         (otherDebt) => new OtherDebtOutput(otherDebt),
       ),
     })
   }
-<<<<<<< Updated upstream
-=======
 
   @Mutation(() => TaxReturnOutput)
   async upsertTaxReturn(
@@ -56,16 +47,11 @@ export class TaxReturnsResolver {
       incomes: taxReturn.data.incomes.map((income) => new IncomeOutput(income)),
       assets: taxReturn.data.assets.map((asset) => new AssetOutput(asset)),
       mortgages: taxReturn.data.mortgages.map(
-        (mortgage) =>
-          new MortgageOutput({
-            ...mortgage,
-            loanDate: new Date(mortgage.loanDate),
-          }),
+        (mortgage) => new MortgageOutput(mortgage),
       ),
       otherDebts: taxReturn.data.otherDebts.map(
         (otherDebt) => new OtherDebtOutput(otherDebt),
       ),
     })
   }
->>>>>>> Stashed changes
 }

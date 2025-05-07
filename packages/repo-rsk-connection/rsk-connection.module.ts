@@ -16,7 +16,6 @@ import { LoggerModule } from '@repo/logger'
           basePath: configService.getOrThrow('rskConnection.baseUrl', {
             infer: true,
           }),
-          fetchApi: fetch,
         })
         return new TaxReturnsApi(config)
       },

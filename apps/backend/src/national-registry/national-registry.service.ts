@@ -7,9 +7,7 @@ export class NationalRegistryService {
 
   public async getPersonById(auth: string, nationalId: string) {
     return await this.personsClient.personsControllerGetPersonByNationalIdV1(
-      {
-        nationalId,
-      },
+      nationalId,
       // adding this header can be standardized using middleware
       // token exchanges can be handled automatically in the same way
       { headers: { Authorization: `Bearer ${auth}` } },

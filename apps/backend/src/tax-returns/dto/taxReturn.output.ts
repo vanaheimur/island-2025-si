@@ -15,8 +15,6 @@ export class TaxReturnOutput {
   year!: number
   @Field(() => TaxReturnOutputStatusEnum)
   status!: TaxReturnOutputStatusEnum
-  createdAt!: Date
-  updatedAt!: Date
   userId!: number
 
   incomes!: IncomeOutput[]
