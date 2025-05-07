@@ -7,8 +7,6 @@ export class AssetOutput {
   description!: string
   amount!: number
   isForeign!: boolean
-  createdAt!: Date
-  updatedAt!: Date
   userId!: number
 
   // this allows us to cast data to an instance of this class

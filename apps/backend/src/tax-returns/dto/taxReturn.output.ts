@@ -11,12 +11,9 @@ registerEnumType(TaxReturnOutputStatusEnum, { name: 'StatusEnum' })
 
 @ObjectType()
 export class TaxReturnOutput {
-  id!: number
   year!: number
   @Field(() => TaxReturnOutputStatusEnum)
   status!: TaxReturnOutputStatusEnum
-  createdAt!: Date
-  updatedAt!: Date
   userId!: number
 
   incomes!: IncomeOutput[]
