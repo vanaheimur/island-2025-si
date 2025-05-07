@@ -18,6 +18,7 @@ export class TaxReturnsService {
     )
   }
 
+<<<<<<< Updated upstream
   updateTaxReturn(auth: string, id: number, input: UpdateTaxReturnInput) {
     return this.rskClient.taxReturnsControllerUpdateTaxReturnV1(
       {
@@ -26,5 +27,11 @@ export class TaxReturnsService {
       },
       { headers: { Authorization: `Bearer ${auth}` } },
     )
+=======
+  updateTaxReturn(auth: string, input: UpdateTaxReturnInput) {
+    return this.rskClient.taxReturnsControllerUpsertTaxReturnV1(input, {
+      headers: { Authorization: `Bearer ${auth}` },
+    })
+>>>>>>> Stashed changes
   }
 }

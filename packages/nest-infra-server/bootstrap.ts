@@ -82,7 +82,7 @@ export const createApp = async <T extends boolean | undefined>(
         enableImplicitConversion: true,
       },
       whitelist: true,
-      forbidNonWhitelisted: true,
+      forbidNonWhitelisted: false,
     }),
   )
 

@@ -1,5 +1,27 @@
-import { CreateTaxReturnInput } from './createTaxReturn.input'
+import { AssetInput } from './asset.input'
+import { IncomeInput } from './income.input'
+import { MortgageInput } from './mortgage.input'
+import { OtherDebtInput } from './otherDebt.input'
 
-import { PartialType } from '@nestjs/swagger'
+import { InputType } from '@nestjs/graphql'
+import { Type } from 'class-transformer'
+import { IsOptional } from 'class-validator'
 
-export class UpdateTaxReturnInput extends PartialType(CreateTaxReturnInput) {}
+@InputType()
+export class UpdateTaxReturnInput {
+  @IsOptional()
+  @Type(() => IncomeInput)
+  incomes?: IncomeInput[]
+
+  @IsOptional()
+  @Type(() => AssetInput)
+  assets?: AssetInput[]
+
+  @IsOptional()
+  @Type(() => MortgageInput)
+  mortgages?: MortgageInput[]
+
+  @IsOptional()
+  @Type(() => OtherDebtInput)
+  otherDebts?: OtherDebtInput[]
+}
