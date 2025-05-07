@@ -12,6 +12,7 @@ export function NumericField({
 }: {
   label: string
   size?: 'lg' | 'md' | 'sm'
+  variant?: 'default' | 'outline' | 'ghost' | 'utility' | 'destructive'
 } & Omit<
   React.ComponentProps<typeof NumericFormat>,
   'customInput' | 'value' | 'onChange'
@@ -27,6 +28,13 @@ export function NumericField({
       thousandSeparator={thousandSeparator}
       onValueChange={(value) => field.handleChange(value.floatValue)}
       size={size}
+      onBlur={() => field.handleBlur()}
+      error={
+        (field.form.state.submissionAttempts || field.state.meta.isBlurred) &&
+        field.state.meta.errors.length
+          ? field.state.meta.errors.map((e) => e.message).join(', ')
+          : undefined
+      }
       {...props}
     />
   )

@@ -3,18 +3,14 @@ import clsx from 'clsx'
 import * as React from 'react'
 import Text, { getTextStyles } from './text'
 
-function Input({
-  className,
-  type,
-  label,
-  size = 'lg',
-  error,
-  ...props
-}: Omit<React.ComponentProps<'input'>, 'size'> & {
-  label?: string
-  size?: 'lg' | 'md' | 'sm'
-  error?: string
-}) {
+const Input = React.forwardRef<
+  HTMLInputElement,
+  Omit<React.ComponentProps<'input'>, 'size'> & {
+    label?: string
+    size?: 'lg' | 'md' | 'sm'
+    error?: string
+  }
+>(({ className, type, label, size = 'lg', error, ...props }, ref) => {
   return (
     <div>
       <div
@@ -47,6 +43,7 @@ function Input({
             id={props.name}
             type={type}
             data-slot="input"
+            ref={ref}
             className={clsx(
               'w-full pl-4 relative z-10 focus:ring-0 focus:ring-offset-0 outline-none',
               getTextStyles({ variant: 'h3' }),
@@ -60,6 +57,7 @@ function Input({
             id={props.name}
             type={type}
             data-slot="input"
+            ref={ref}
             className={clsx(
               'w-full pl-4 relative z-10 focus:ring-0 focus:ring-offset-0 outline-none',
               getTextStyles({ variant: 'h5' }),
@@ -73,6 +71,7 @@ function Input({
             id={props.name}
             type={type}
             data-slot="input"
+            ref={ref}
             className={clsx(
               'file:text-foreground placeholder:text-dark-400 placeholder:font-light selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-10 md:h-12 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm',
               'focus-visible:border-mint-400 focus-visible:ring-mint-400 focus-visible:ring-[3px]',
@@ -97,6 +96,6 @@ function Input({
       )}
     </div>
   )
-}
+})
 
 export { Input }
