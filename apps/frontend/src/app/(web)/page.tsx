@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import SvgOpenOutline from '@/icons/OpenOutline'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
           ▶︎
         </button>
       </div>
+      <CTA />
       <Text variant="h2" as="h2">
         Hvað er skattframtal?
       </Text>
@@ -134,16 +136,7 @@ export default function Home() {
         vernda gögn þín.
       </Text>
 
-      <div className="bg-blue-100 p-8 rounded-[8px] flex gap-4 md:items-center my-12 max-md:flex-col">
-        <Text variant="h3" className="text-blue-600">
-          Skila skattframtali
-        </Text>
-        <div className="md:ml-auto">
-          <Button size="lg">
-            Skila <SvgOpenOutline />
-          </Button>
-        </div>
-      </div>
+      <CTA />
 
       <Text variant="h3" as="h3" className="mt-12">
         Nánari upplýsingar
@@ -190,3 +183,18 @@ export default function Home() {
     </div>
   )
 }
+
+const CTA = () => (
+  <div className="bg-blue-100 p-8 rounded-[8px] flex gap-4 md:items-center my-12 max-md:flex-col">
+    <Text variant="h3" className="text-blue-600">
+      Opna skattframtal
+    </Text>
+    <div className="md:ml-auto">
+      <Button size="lg" asChild>
+        <Link href="/umsokn/skattframtal/upplysingasofnun">
+          Opna <SvgOpenOutline />
+        </Link>
+      </Button>
+    </div>
+  </div>
+)
