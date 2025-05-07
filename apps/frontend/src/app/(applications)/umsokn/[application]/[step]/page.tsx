@@ -2,9 +2,9 @@ import { Stepper } from '@/components/stepper/stepper'
 import Link from 'next/link'
 import BasicInfo from './_stepps/basic-info'
 import DataGathering from './_stepps/data-gathering'
+import Debts from './_stepps/debts'
 import Income from './_stepps/income'
 import Properties from './_stepps/properties'
-import Debts from './_stepps/debts'
 import Done from './_stepps/qqq'
 
 type Props = {
@@ -59,7 +59,50 @@ export default async function StepPage({ params }: Props) {
         </div>
       </div>
       <div className="col-span-12 md:col-span-3 pt-20">
-        <Stepper />
+        <Stepper
+          steps={[
+            {
+              label: 'Upplýsingasöfnun',
+              step: '1',
+              active: step === 'upplysingasofnun',
+            },
+            {
+              label: 'Almennar upplýsingar',
+              step: '2',
+              active: step === 'almennar-upplysingar',
+            },
+            {
+              label: 'Tekjur',
+              step: '3',
+              active: step === 'tekjur',
+              subSteps: [
+                '3.1 - Tekjur frá launagreiðenda',
+                '3.2 - Samsköttun',
+                '3.3 - Lífeyrisgreiðslur, styrkir, greiðslur frá Tryggingastofnun o.fl.',
+                '3.4 - Dagpeningar, ökutækjastyrkur og önnur hlunnindi',
+                '3.5 - Greinargerð um kaup og sölu á eignum',
+                '3.6 - Erlendar tekjur',
+                '3.7 - Skattfrjálsar tekjur',
+                '3.10 - Hvað greiddir þú háa staðgreiðslu',
+              ],
+            },
+            {
+              label: 'Eignir',
+              step: '4',
+              active: step === 'eignir',
+            },
+            {
+              label: 'Skuldir',
+              step: '5',
+              active: step === 'skuldir',
+            },
+            {
+              label: 'Sjuddirarirei',
+              step: '6',
+              active: step === 'sjuddirarirei',
+            },
+          ]}
+        />
       </div>
     </div>
   )
