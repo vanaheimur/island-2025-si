@@ -87,18 +87,42 @@ export const WithDefaultValue: Story = {
 }
 
 export const WithError: Story = {
-  render: () => (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Input
-        type="email"
-        name="email-error"
-        placeholder="name@example.com"
-        className="border-red-500"
-        label="Email"
-      />
-      <p className="text-sm text-red-500">
-        Please enter a valid email address.
-      </p>
-    </div>
-  ),
+  args: {
+    type: 'email',
+    name: 'email-error',
+    placeholder: 'name@example.com',
+    label: 'Email',
+    error: 'Please enter a valid email address.',
+  },
+}
+
+export const Required: Story = {
+  args: {
+    type: 'text',
+    label: 'Required Field',
+    name: 'required-input',
+    required: true,
+    placeholder: 'This field is required',
+  },
+}
+
+export const SmallSize: Story = {
+  args: {
+    type: 'text',
+    label: 'Small Input',
+    name: 'small-input',
+    size: 'sm',
+    placeholder: 'Small size input',
+  },
+}
+
+export const ReadOnly: Story = {
+  args: {
+    type: 'text',
+    label: 'Read Only Input',
+    name: 'readonly-input',
+    readOnly: true,
+    defaultValue: 'Read only value',
+    placeholder: 'Read only',
+  },
 }
