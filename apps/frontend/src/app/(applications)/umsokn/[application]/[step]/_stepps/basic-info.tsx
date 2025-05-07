@@ -9,6 +9,8 @@ export default function BasicInfo() {
     defaultValues: {
       ssn: '1234567890',
       ssnSpouse: '1234567830',
+      test: '',
+      tala: '',
     },
     onSubmit: (values) => {
       console.log(values)
@@ -31,12 +33,33 @@ export default function BasicInfo() {
           <form.AppField
             name="ssn"
             children={(field) => (
-              <field.TextField label="Kennitala framteljanda" />
+              <field.PatternField
+                label="Kennitala framteljanda"
+                format="###### ####"
+              />
             )}
           />
           <form.AppField
             name="ssnSpouse"
-            children={(field) => <field.TextField label="Kennitala maka" />}
+            children={(field) => (
+              <field.PatternField label="Kennitala maka" format="###### ####" />
+            )}
+          />
+          <form.AppField
+            name="test"
+            children={(field) => (
+              <field.SelectField
+                label="Kennitala maka"
+                options={[
+                  { label: 'eitthvað', value: '1' },
+                  { label: 'eitthvað annað', value: '2' },
+                ]}
+              />
+            )}
+          />
+          <form.AppField
+            name="tala"
+            children={(field) => <field.NumericField label="Prufu tala" />}
           />
         </div>
       </div>
