@@ -39,7 +39,14 @@ export class TaxReturnsResolver {
       incomes: [
         { amount: 1000, category: 'salary', description: 'some value yeah' },
       ],
-      value: 1000,
+      assets: [
+        {
+          landNumber: '123456',
+          description: 'some value yeah',
+          amount: 1000,
+          isForeign: false,
+        },
+      ],
     })
 
     return true
