@@ -21,6 +21,7 @@ export default function BasicInfo() {
       console.log(values)
     },
   })
+
   return (
     <form
       onSubmit={(e) => {
@@ -34,7 +35,7 @@ export default function BasicInfo() {
         <Text variant="h2" className="mb-4">
           Jökull Þórðarson
         </Text>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <form.AppField
             name="ssn"
             validators={{
@@ -79,6 +80,7 @@ export default function BasicInfo() {
         <Text variant="sm" className="mb-4">
           Börn fædd 2012 og síðar með lögheimili hjá framteljanda í lok árs 2025
         </Text>
+
         <form.Field name="children" mode="array">
           {(field) => {
             return (
@@ -121,7 +123,7 @@ export default function BasicInfo() {
                     type="button"
                     size="default"
                   >
-                    Bæta við barni
+                    Bæta við
                   </Button>
                 </div>
               </div>
