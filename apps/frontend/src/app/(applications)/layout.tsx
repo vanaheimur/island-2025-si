@@ -8,7 +8,7 @@ export default function ApplicationLayout({
   return (
     <>
       <div className="bg-white">
-        <Header />
+        <Header type="application" />
       </div>
       <div className="bg-blueberry-100 grow pt-8 pb-10">
         <div className="container">{children}</div>

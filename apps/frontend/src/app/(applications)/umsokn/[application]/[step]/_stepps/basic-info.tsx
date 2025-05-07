@@ -112,7 +112,7 @@ export default function BasicInfo() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="utility"
                       >
                         <SvgRemove className="size-7" />
                       </Button>

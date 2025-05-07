@@ -52,7 +52,7 @@ export default async function StepPage({ params }: Props) {
   const StepComponent = isStep(step) ? steps[step] : NoStep
 
   return (
-    <div className="grid grid-cols-12 gap-12">
+    <div className="md:grid md:grid-cols-12 gap-12">
       <div className="col-span-12 md:col-span-9">
         <div className="bg-white rounded-[8px] pt-20 pb-10">
           <div className="max-md:px-6 md:w-10/12 mx-auto">
@@ -60,7 +60,7 @@ export default async function StepPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-3 pt-4 flex flex-col">
+      <div className="col-span-12 md:col-span-3 pt-4 flex flex-col max-md:hidden">
         <Stepper
           steps={[
             {
