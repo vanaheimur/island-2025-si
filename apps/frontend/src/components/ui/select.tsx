@@ -79,7 +79,7 @@ function SelectTrigger({
         )}
       >
         <span
-          className={clsx(' line-clamp-1 font-light', {
+          className={clsx(' line-clamp-1 font-semibold', {
             'text-mobile-lg md:text-lg': size === 'default',
             'text-mobile-md md:text-md': size === 'sm',
           })}

@@ -17,6 +17,13 @@ export function TextField({
       value={field.state.value}
       onChange={(e) => field.handleChange(e.target.value)}
       size={size}
+      onBlur={() => field.handleBlur()}
+      error={
+        (field.form.state.submissionAttempts || field.state.meta.isBlurred) &&
+        field.state.meta.errors.length
+          ? field.state.meta.errors.map((e) => e.message).join(', ')
+          : undefined
+      }
     />
   )
 }
