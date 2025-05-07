@@ -146,8 +146,8 @@ export default function Income() {
                       <div className="grow">
                         <form.AppField
                           name={`incomeOther[${i}].incomeCategory`}
-                          children={(field) => (
-                            <field.SelectField
+                          children={(subField) => (
+                            <subField.SelectField
                               label="Tegund styrks"
                               options={[
                                 { label: 'Íþróttastyrkur', value: '6' },
@@ -215,8 +215,8 @@ export default function Income() {
                       <div className="grow">
                         <form.AppField
                           name={`grants[${i}].grantCategory`}
-                          children={(field) => (
-                            <field.SelectField
+                          children={(subField) => (
+                            <subField.SelectField
                               label="Tegund hlunninda"
                               options={[
                                 { label: 'Ökutækjastyrkur', value: '2' },
