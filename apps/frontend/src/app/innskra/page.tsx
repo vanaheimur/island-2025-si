@@ -7,28 +7,24 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
+import { useRouter } from 'next/navigation'
+import { z } from 'zod'
 
 export default function Auth() {
+  const router = useRouter()
+
   const form = useAppForm({
     defaultValues: {
       nationalId: '',
     },
     onSubmit: (values) => {
-      console.log('values:', values)
-
-      if (!values.value.nationalId) {
-        console.log('error: nationalId is required')
-        return
-      }
-
-      if (!/^\d{10}$/.test(values.value.nationalId)) {
-        console.log('error: nationalId is not valid:', values.value.nationalId)
-        return
-      }
-
       graphqlClient
         .login({ nationalId: values.value.nationalId })
-        .then((res) => console.log('res:', res))
+        .then((res) => {
+          if (res.login) {
+            router.push('/umsokn/framtal/upplysingasofnun')
+          }
+        })
         .catch((err) => console.log('err:', err))
     },
   })
@@ -59,6 +55,9 @@ export default function Auth() {
           >
             <form.AppField
               name="nationalId"
+              validators={{
+                onChange: z.string().min(10, 'Kennitala er nauðsynleg'),
+              }}
               children={(field) => (
                 <field.PatternField
                   label="Kennitala"
