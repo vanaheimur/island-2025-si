@@ -59,7 +59,7 @@ export class AuthResolver {
   }
 
   @Query(() => AuthOutput)
-  async isLoggedIn(@CurrentUser() user: User): Promise<AuthOutput> {
+  async getUser(@CurrentUser() user: User): Promise<AuthOutput> {
     return new AuthOutput(user)
   }
 }
