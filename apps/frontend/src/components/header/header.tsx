@@ -11,6 +11,7 @@ import SvgPerson from '@/icons/Person'
 import SvgSearch from '@/icons/Search'
 import Link from 'next/link'
 import Text from '../ui/text'
+import { Logout } from './logout'
 
 const Header = ({
   type = 'default',
@@ -57,9 +58,7 @@ const MyPages = () => {
       <Button variant="utility" className="max-md:hidden">
         <SvgNotificationsOutline className="size-4 text-blue-400" />
       </Button>
-      <Button variant="utility" className="max-md:hidden">
-        EN
-      </Button>
+      <Logout>EN</Logout>
       <Button variant="utility" className="max-md:hidden">
         Yfirlit <SvgDots className="size-4 text-blue-400 " />
       </Button>
@@ -75,9 +74,7 @@ const MyPages = () => {
 const Application = () => {
   return (
     <div className="ml-auto flex gap-4">
-      <Button variant="utility" className="max-md:hidden">
-        EN
-      </Button>
+      <Logout>EN</Logout>
       <button className="md:hidden rounded-full bg-blue-100 text-blue-400 font-semibold size-10 flex items-center justify-center">
         JJ
       </button>

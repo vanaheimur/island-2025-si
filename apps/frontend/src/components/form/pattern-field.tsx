@@ -25,6 +25,7 @@ export function PatternField({
       onValueChange={(value) => field.handleChange(value.value)}
       size={size}
       onBlur={() => field.handleBlur()}
+      name={field.name}
       error={
         (field.form.state.submissionAttempts || field.state.meta.isBlurred) &&
         field.state.meta.errors.length

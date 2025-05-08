@@ -8,10 +8,31 @@ import { Label } from '@/components/ui/label'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
 import { useRouter } from 'next/navigation'
+import React from 'react'
 import { z } from 'zod'
 
 export default function Auth() {
   const router = useRouter()
+  const [checking, setChecking] = React.useState(true)
+
+  React.useEffect(() => {
+    let isMounted = true
+    graphqlClient
+      .getUser()
+      .then((res) => {
+        if (isMounted && res?.getUser) {
+          router.push('/umsokn/framtal/upplysingasofnun')
+        } else {
+          setChecking(false)
+        }
+      })
+      .catch(() => {
+        setChecking(false)
+      })
+    return () => {
+      isMounted = false
+    }
+  }, [router])
 
   const form = useAppForm({
     defaultValues: {
@@ -28,6 +49,8 @@ export default function Auth() {
         .catch((err) => console.log('err:', err))
     },
   })
+
+  if (checking) return null
 
   return (
     <div className="flex flex-col items-center">
@@ -63,6 +86,7 @@ export default function Auth() {
                   label="Kennitala"
                   format="######-####"
                   placeholder="000000-0000"
+                  data-testid="nationalId"
                 />
               )}
             />
