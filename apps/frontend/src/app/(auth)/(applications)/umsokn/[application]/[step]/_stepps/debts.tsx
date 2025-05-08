@@ -1,5 +1,8 @@
 'use client'
 
+import { ErrorNotification } from './fetch-error'
+import { Skeleton } from './skeleton'
+
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
@@ -7,8 +10,7 @@ import { graphqlClient } from '@/graphql/client'
 import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import Link from 'next/link'
-import { ErrorNotification } from './fetch-error'
-import { Skeleton } from './skeleton'
+import { useRouter } from 'next/navigation'
 
 export default function Debts() {
   const {
@@ -19,6 +21,7 @@ export default function Debts() {
     queryKey: ['taxReturn'],
     queryFn: () => graphqlClient.getTaxReturn(),
   })
+  const router = useRouter()
 
   const mortgage = taxReturnData?.getTaxReturn.mortgages?.[0] || null
   const propertyValue =
@@ -42,31 +45,6 @@ export default function Debts() {
       remainingDebt: mortgage?.remainingDebt ?? '', // '28540000',
       soldNotBoughtNew: false,
       otherDebts: [
-        {
-          description: 'Eftirstöðvar á korti númer: 4469 88XX XXXX 4567',
-          interestExpenses: '39200',
-          remainingDebt: '217000',
-        },
-        {
-          description: 'Aukalán',
-          interestExpenses: '86000',
-          remainingDebt: '980000',
-        },
-        {
-          description: '0142-26-732645 Varðan',
-          interestExpenses: '14500',
-          remainingDebt: '62000',
-        },
-        {
-          description: 'Kílómetragjald, Skatturinn',
-          interestExpenses: '0',
-          remainingDebt: '2370',
-        },
-        {
-          description: 'Þing- og sveitarsjóðsgjöld, Skatturinn',
-          interestExpenses: '224',
-          remainingDebt: '0',
-        },
         ...otherDebt.map((debt) => ({
           description: debt.description,
           interestExpenses: debt.interestExpenses.toString(),
@@ -84,6 +62,8 @@ export default function Debts() {
           })),
         },
       })
+
+      router.push('/umsokn/framtal/skilad')
     },
   })
 
@@ -292,9 +272,9 @@ export default function Debts() {
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/framtal/eignir">Til baka</Link>
         </Button>
-        <Button size="lg" asChild>
-          <Link href="/umsokn/framtal/skilad">Klára framtal</Link>
-        </Button>
+        <form.AppForm>
+          <form.SubscribeButton label="Klára framtal" />
+        </form.AppForm>
       </div>
     </form>
   )
