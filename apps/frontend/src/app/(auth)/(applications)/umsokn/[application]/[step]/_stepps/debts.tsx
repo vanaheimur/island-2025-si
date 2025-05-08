@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
 import { GetTaxReturnQuery } from '@/graphql/generated'
+import { format } from 'date-fns'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -160,7 +161,7 @@ export default function Debts() {
                 Lántökudagur:
               </Text>
               <Text size="sm" as="span" className="text-blue-400">
-                {loanDate}
+                {format(loanDate, 'dd.MM.yyyy')}
               </Text>
             </div>
             <div className="flex gap-1 w-full">
@@ -283,10 +284,8 @@ export default function Debts() {
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/framtal/eignir">Til baka</Link>
         </Button>
-        <Button size="lg">
-          <Link href="/umsokn/framtal/sjuddirarirei">
-            Áfram í sjuddirarirei
-          </Link>
+        <Button size="lg" asChild>
+          <Link href="/umsokn/framtal/skilad">Klára framtal</Link>
         </Button>
       </div>
     </form>

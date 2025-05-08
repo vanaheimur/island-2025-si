@@ -7,12 +7,12 @@ export const Stepper = ({
 }: {
   steps: { label: string; step: string; active: boolean; subSteps?: string[] }[]
 }) => {
-  const activeStep = steps.find((step) => step.active)
+  const activeStep = steps.findIndex((step) => step.active)
 
   return (
     <div>
       {steps.map((step, i) => {
-        const isDone = parseInt(step.step) < parseInt(activeStep?.step || '0')
+        const isDone = i < activeStep
         return (
           <div
             key={step.step}

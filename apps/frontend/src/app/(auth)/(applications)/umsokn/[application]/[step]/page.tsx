@@ -5,7 +5,6 @@ import DataGathering from './_stepps/data-gathering'
 import Debts from './_stepps/debts'
 import Income from './_stepps/income'
 import Properties from './_stepps/properties'
-import Done from './_stepps/qqq'
 
 type Props = {
   params: Promise<{
@@ -20,7 +19,6 @@ const steps = {
   tekjur: Income,
   eignir: Properties,
   skuldir: Debts,
-  sjuddirarirei: Done,
 } as const
 
 const isStep = (step: string): step is keyof typeof steps =>
@@ -95,11 +93,6 @@ export default async function StepPage({ params }: Props) {
               label: 'Skuldir',
               step: '4',
               active: step === 'skuldir',
-            },
-            {
-              label: 'Sjuddirarirei',
-              step: '5',
-              active: step === 'sjuddirarirei',
             },
           ]}
         />
