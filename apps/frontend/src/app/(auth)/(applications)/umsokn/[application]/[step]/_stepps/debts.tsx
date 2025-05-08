@@ -114,8 +114,8 @@ export default function Debts() {
           Vaxtagjöld vegna íbúðarhúsnæðis til eigin nota.
         </Text>
 
-        <div className="grid grid-cols-1 gap-6">
-          <div className="flex gap-4">
+        <div className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4">
             <form.AppField
               name="residentialLocation"
               children={(field) => (
@@ -146,7 +146,7 @@ export default function Debts() {
             </Text>
           </div>
 
-          <div className="flex gap-4 justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="flex gap-1 w-full">
               <Text size="sm" as="span">
                 Lánsnúmer:
@@ -173,7 +173,7 @@ export default function Debts() {
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4">
             <form.AppField
               name="totalPaymentsForTheYear"
               children={(field) => (
@@ -228,15 +228,18 @@ export default function Debts() {
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="w-3/5">
+                    <div
+                      className="flex gap-2 items-center max-lg:flex-wrap"
+                      key={i}
+                    >
+                      <div className="w-full lg:w-8/12 xl:w-3/5">
                         <form.AppField name={`otherDebts[${i}].description`}>
                           {(subField) => (
                             <subField.TextField label="Lýsing" size="md" />
                           )}
                         </form.AppField>
                       </div>
-                      <div className="w-1/5">
+                      <div className="w-[calc(50%-4px)] lg:w-4/12 xl:w-1/5">
                         <form.AppField
                           name={`otherDebts[${i}].interestExpenses`}
                         >
@@ -248,7 +251,7 @@ export default function Debts() {
                           )}
                         </form.AppField>
                       </div>
-                      <div className="w-1/5">
+                      <div className="w-[calc(50%-4px)] lg:w-4/12 xl:w-1/5">
                         <form.AppField name={`otherDebts[${i}].remainingDebt`}>
                           {(subField) => (
                             <subField.NumericField
