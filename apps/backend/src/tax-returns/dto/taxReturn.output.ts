@@ -2,6 +2,7 @@ import { AssetOutput } from './asset.output'
 import { IncomeOutput } from './income.output'
 import { MortgageOutput } from './mortgage.output'
 import { OtherDebtOutput } from './otherDebt.output'
+import { VehicleOutput } from './vehicle.output'
 
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql'
 import { TaxReturnOutputStatusEnum } from '@repo/rsk-connection'
@@ -18,6 +19,7 @@ export class TaxReturnOutput {
 
   incomes!: IncomeOutput[]
   assets!: AssetOutput[]
+  vehicles!: VehicleOutput[]
   mortgages!: MortgageOutput[]
   otherDebts!: OtherDebtOutput[]
 

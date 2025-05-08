@@ -2,6 +2,7 @@ import { AssetInput } from './asset.input'
 import { IncomeInput } from './income.input'
 import { MortgageInput } from './mortgage.input'
 import { OtherDebtInput } from './otherDebt.input'
+import { VehicleInput } from './vehicle.input'
 
 import { InputType } from '@nestjs/graphql'
 import { Type } from 'class-transformer'
@@ -16,6 +17,10 @@ export class UpdateTaxReturnInput {
   @IsOptional()
   @Type(() => AssetInput)
   assets?: AssetInput[]
+
+  @IsOptional()
+  @Type(() => VehicleInput)
+  vehicles?: VehicleInput[]
 
   @IsOptional()
   @Type(() => MortgageInput)

@@ -1,15 +1,15 @@
 import { ObjectType } from '@nestjs/graphql'
 
 @ObjectType()
-export class OtherDebtOutput {
+export class VehicleOutput {
   id!: number
-  description!: string
-  interestExpenses!: number
-  remainingDebt!: number
+  licensePlate!: string
+  yearOfPurchase!: number
+  value!: number
   userId!: number
 
   // this allows us to cast data to an instance of this class
-  constructor(partial: Partial<OtherDebtOutput>) {
+  constructor(partial: Partial<VehicleOutput>) {
     Object.assign(this, partial)
   }
 }

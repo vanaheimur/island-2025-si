@@ -4,6 +4,7 @@ import { MortgageOutput } from './dto/mortgage.output'
 import { OtherDebtOutput } from './dto/otherDebt.output'
 import { TaxReturnOutput } from './dto/taxReturn.output'
 import { UpdateTaxReturnInput } from './dto/updateTaxReturn.input'
+import { VehicleOutput } from './dto/vehicle.output'
 import { TaxReturnsService } from './tax-returns.service'
 import { Auth } from '../auth/decorators/auth.decorator'
 
@@ -21,6 +22,9 @@ export class TaxReturnsResolver {
       ...taxReturn.data,
       incomes: taxReturn.data.incomes.map((income) => new IncomeOutput(income)),
       assets: taxReturn.data.assets.map((asset) => new AssetOutput(asset)),
+      vehicles: taxReturn.data.vehicles.map(
+        (vehicle) => new VehicleOutput(vehicle),
+      ),
       mortgages: taxReturn.data.mortgages.map(
         (mortgage) => new MortgageOutput(mortgage),
       ),
@@ -41,6 +45,9 @@ export class TaxReturnsResolver {
       ...taxReturn.data,
       incomes: taxReturn.data.incomes.map((income) => new IncomeOutput(income)),
       assets: taxReturn.data.assets.map((asset) => new AssetOutput(asset)),
+      vehicles: taxReturn.data.vehicles.map(
+        (vehicle) => new VehicleOutput(vehicle),
+      ),
       mortgages: taxReturn.data.mortgages.map(
         (mortgage) => new MortgageOutput(mortgage),
       ),
