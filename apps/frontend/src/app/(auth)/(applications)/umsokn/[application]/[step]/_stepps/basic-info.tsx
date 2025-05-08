@@ -3,6 +3,7 @@
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
+import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -33,7 +34,7 @@ export default function BasicInfo() {
         <Text variant="h2" className="mb-4">
           Jón Jónsson
         </Text>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <form.AppField
             name="ssn"
             children={(field) => (
@@ -66,9 +67,9 @@ export default function BasicInfo() {
             return (
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
-                  return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                  return i === 0 ? (
+                    <div className="flex gap-4 items-center" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 grow">
                         <form.AppField name={`children[${i}].name`}>
                           {(subField) => (
                             <subField.TextField
@@ -78,8 +79,6 @@ export default function BasicInfo() {
                             />
                           )}
                         </form.AppField>
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`children[${i}].ssn`}>
                           {(subField) => (
                             <subField.PatternField
@@ -91,6 +90,34 @@ export default function BasicInfo() {
                           )}
                         </form.AppField>
                       </div>
+                    </div>
+                  ) : (
+                    <div className="flex gap-4 items-end" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 grow">
+                        <form.AppField name={`children[${i}].name`}>
+                          {(subField) => (
+                            <subField.TextField label="Name" size="md" />
+                          )}
+                        </form.AppField>
+                        <form.AppField name={`children[${i}].ssn`}>
+                          {(subField) => (
+                            <subField.PatternField
+                              label="Kennitala"
+                              format="###### ####"
+                              size="md"
+                            />
+                          )}
+                        </form.AppField>
+                      </div>
+
+                      <Button
+                        onClick={() => field.removeValue(i)}
+                        type="button"
+                        size="lg"
+                        variant="outline"
+                      >
+                        <SvgRemove className="size-7" />
+                      </Button>
                     </div>
                   )
                 })}

@@ -86,12 +86,12 @@ export default async function StepPage({ params }: Props) {
             },
             {
               label: 'Eignir',
-              step: '3',
+              step: '4',
               active: step === 'eignir',
             },
             {
               label: 'Skuldir',
-              step: '4',
+              step: '5',
               active: step === 'skuldir',
             },
           ]}

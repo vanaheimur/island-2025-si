@@ -37,7 +37,7 @@ export function SelectField({
       value={field.state.value}
       onValueChange={(value) => field.handleChange(value)}
     >
-      <SelectTrigger label={label} size={size} error={error}>
+      <SelectTrigger label={label} size={size} error={error} className="w-full">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

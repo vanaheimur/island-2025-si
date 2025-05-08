@@ -161,7 +161,7 @@ export default function Debts() {
                 Lántökudagur:
               </Text>
               <Text size="sm" as="span" className="text-blue-400">
-                {format(loanDate, 'dd.MM.yyyy')}
+                {loanDate ? format(loanDate, 'dd.MM.yyyy') : '-'}
               </Text>
             </div>
             <div className="flex gap-1 w-full">

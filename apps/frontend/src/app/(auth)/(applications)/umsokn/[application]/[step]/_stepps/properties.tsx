@@ -123,8 +123,8 @@ export default function Properties() {
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                    <div className="flex gap-4 items-end" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4 grow">
                         <form.AppField
                           name={`assetsDomestic[${i}].description`}
                         >
@@ -132,8 +132,6 @@ export default function Properties() {
                             <subField.TextField label="Fasteign" size="md" />
                           )}
                         </form.AppField>
-                      </div>
-                      <div className="grow">
                         <form.AppField
                           name={`assetsDomestic[${i}].landNumber`}
                           children={(subField) => (
@@ -144,8 +142,6 @@ export default function Properties() {
                             />
                           )}
                         />
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`assetsDomestic[${i}].amount`}>
                           {(subField) => (
                             <subField.NumericField
@@ -159,7 +155,7 @@ export default function Properties() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="outline"
                       >
                         <SvgRemove className="size-7" />
                       </Button>
@@ -201,23 +197,19 @@ export default function Properties() {
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                    <div className="flex gap-4 items-end" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4 grow">
                         <form.AppField name={`assetsForeign[${i}].description`}>
                           {(subField) => (
                             <subField.TextField label="Fasteign" size="md" />
                           )}
                         </form.AppField>
-                      </div>
-                      <div className="grow">
                         <form.AppField
                           name={`assetsForeign[${i}].country`}
                           children={(subField) => (
                             <subField.TextField label="Land" size="md" />
                           )}
                         />
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`assetsForeign[${i}].amount`}>
                           {(subField) => (
                             <subField.NumericField
@@ -231,7 +223,7 @@ export default function Properties() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="outline"
                       >
                         <SvgRemove className="size-7" />
                       </Button>
@@ -270,26 +262,22 @@ export default function Properties() {
         <form.Field name="vehicles" mode="array">
           {(field) => {
             return (
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 w-full">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                    <div className="flex gap-4 items-end w-full" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4 grow">
                         <form.AppField name={`vehicles[${i}].licensePlate`}>
                           {(subField) => (
                             <subField.TextField label="Númeraplata" size="md" />
                           )}
                         </form.AppField>
-                      </div>
-                      <div className="grow">
                         <form.AppField
                           name={`vehicles[${i}].yearOfPurchase`}
                           children={(field) => (
                             <field.TextField label="Kaupár" size="md" />
                           )}
                         />
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`vehicles[${i}].amount`}>
                           {(subField) => (
                             <subField.NumericField label="Verð" size="md" />
@@ -300,7 +288,7 @@ export default function Properties() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="outline"
                       >
                         <SvgRemove className="size-7" />
                       </Button>

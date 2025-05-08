@@ -118,8 +118,8 @@ export default function Income() {
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                    <div className="flex gap-4 items-end" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 grow">
                         <form.AppField
                           name={`incomeEmployer[${i}].description`}
                         >
@@ -130,8 +130,6 @@ export default function Income() {
                             />
                           )}
                         </form.AppField>
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`incomeEmployer[${i}].amount`}>
                           {(subField) => (
                             <subField.NumericField
@@ -194,8 +192,8 @@ export default function Income() {
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                    <div className="flex gap-4 items-end" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-4 grow">
                         <form.AppField name={`incomeOther[${i}].description`}>
                           {(subField) => (
                             <subField.TextField
@@ -204,8 +202,6 @@ export default function Income() {
                             />
                           )}
                         </form.AppField>
-                      </div>
-                      <div className="grow">
                         <form.AppField
                           name={`incomeOther[${i}].incomeCategory`}
                           children={(subField) => (
@@ -219,8 +215,6 @@ export default function Income() {
                             />
                           )}
                         />
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`incomeOther[${i}].amount`}>
                           {(subField) => (
                             <subField.NumericField label="Upphæð" size="md" />
@@ -273,8 +267,8 @@ export default function Income() {
               <div className="flex flex-col gap-6">
                 {field.state.value.map((_, i) => {
                   return (
-                    <div className="flex gap-6 items-center" key={i}>
-                      <div className="grow">
+                    <div className="flex gap-4 items-center" key={i}>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 grow">
                         <form.AppField
                           name={`grants[${i}].grantCategory`}
                           children={(subField) => (
@@ -290,8 +284,6 @@ export default function Income() {
                             />
                           )}
                         />
-                      </div>
-                      <div className="grow">
                         <form.AppField name={`grants[${i}].amount`}>
                           {(subField) => (
                             <subField.NumericField label="Upphæð" size="md" />
