@@ -15,6 +15,7 @@ RUN npx turbo@2.5.2 prune backend --docker
 FROM base AS installer
 RUN apk update
 RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache openjdk17
 WORKDIR /app
 
 # We fetch all the json files needed to install the dependencies
