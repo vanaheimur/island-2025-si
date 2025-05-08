@@ -45,7 +45,7 @@ export default function Debts() {
       installmentOfNominalValue: mortgage?.installmentOfNominalValue ?? '', // '1360000',
       interestExpenses: mortgage?.interestExpenses ?? '', // '920000',
       remainingDebt: mortgage?.remainingDebt ?? '', // '28540000',
-
+      soldNotBoughtNew: false,
       otherDebts: [
         {
           description: 'Eftirstöðvar á korti númer: 4469 88XX XXXX 4567',
@@ -213,6 +213,11 @@ export default function Debts() {
         <Text variant="sm" className="mb-4">
           Ef eign var seld og önnur ekki keypt í staðin skal merka hér
         </Text>
+        <form.AppField name="soldNotBoughtNew">
+          {(subField) => (
+            <subField.CheckboxField label="Ég seldi fasteign og keypti ekki aðra" />
+          )}
+        </form.AppField>
       </div>
 
       <div>
@@ -256,7 +261,7 @@ export default function Debts() {
                         <form.AppField name={`otherDebts[${i}].remainingDebt`}>
                           {(subField) => (
                             <subField.NumericField
-                              label="Eftirstöðvar skulda"
+                              label="Eftirstöðvar skuldar"
                               size="md"
                             />
                           )}
