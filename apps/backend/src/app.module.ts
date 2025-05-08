@@ -21,7 +21,7 @@ import { LoggerModule } from '@repo/logger'
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: config().app.showPlayground,
-      autoSchemaFile: './schema.gql',
+      autoSchemaFile: config().app.generateSchemaFiles ? './schema.gql' : true,
       context: ({ req, res }: RequestContext) => ({ req, res }),
     }),
     NationalRegistryModule,
