@@ -1,11 +1,14 @@
 import { AuthService } from './auth.service'
 import { ACCESS_TOKEN } from './constants'
+import { CurrentUser } from './decorators/currentUser.decorator'
 import { GraphqlResponse } from './decorators/GraphqlResponse.decorator'
 import { IsPublic } from './decorators/isPublic.decorator'
 import { AuthInput } from './dto/auth.input'
+import { AuthOutput } from './dto/auth.output'
+import type { User } from './types'
 
 import { Inject, UnauthorizedException } from '@nestjs/common'
-import { Args, Mutation, Resolver } from '@nestjs/graphql'
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import { type Logger, LOGGER_PROVIDER } from '@repo/logger'
 import type { Response } from 'express'
 
@@ -53,5 +56,10 @@ export class AuthResolver {
     })
 
     return true
+  }
+
+  @Query(() => AuthOutput)
+  async isLoggedIn(@CurrentUser() user: User): Promise<AuthOutput> {
+    return new AuthOutput(user)
   }
 }
