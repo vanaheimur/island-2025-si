@@ -36,7 +36,7 @@ export default function Auth() {
 
   const form = useAppForm({
     defaultValues: {
-      nationalId: '',
+      nationalId: '0101307789',
     },
     onSubmit: (values) => {
       graphqlClient

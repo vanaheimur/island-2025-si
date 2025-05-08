@@ -14,7 +14,12 @@ export default function MyPages() {
         <Text variant="xs" className="font-semibold mb-8">
           Virk framtöl
         </Text>
-        <Card date="08.05.2025" buttonLink="/umsokn/framtal/upplysingaoflun" />
+        <Card
+          date="08.05.2025"
+          buttonLink="/umsokn/framtal/upplysingaoflun"
+          progressWidth="100%"
+          progressText="Þú hefur klárað 6 af 6 skrefum"
+        />
       </div>
       <div className="mt-12">
         <Text variant="xs" className="font-semibold mb-8">

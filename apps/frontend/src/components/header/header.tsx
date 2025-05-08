@@ -64,7 +64,7 @@ const MyPages = () => {
       </Button>
       <Button variant="utility" asChild>
         <Link href="/umsokn/framtal/upplysingasofnun">
-          Jón Jónsson <SvgChevronDown className="size-4 text-blue-400 " />
+          Gervimaður útlönd <SvgChevronDown className="size-4 text-blue-400 " />
         </Link>
       </Button>
     </div>
@@ -80,7 +80,7 @@ const Application = () => {
       </button>
       <Button variant="utility" className="max-md:hidden" asChild>
         <Link href="/minar-sidur/skattframtal">
-          Jón Jónsson <SvgChevronDown className="size-4 text-blue-400" />
+          Gervimaður útlönd <SvgChevronDown className="size-4 text-blue-400" />
         </Link>
       </Button>
     </div>

@@ -32,7 +32,7 @@ export default function BasicInfo() {
     >
       <div>
         <Text variant="h2" className="mb-4">
-          Jón Jónsson
+          Gervimaður útlönd
         </Text>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <form.AppField
