@@ -1,5 +1,8 @@
 'use client'
 
+import { ErrorNotification } from './fetch-error'
+import { Skeleton } from './skeleton'
+
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
@@ -13,8 +16,7 @@ import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
-import { ErrorNotification } from './fetch-error'
-import { Skeleton } from './skeleton'
+import { useRouter } from 'next/navigation'
 
 type Income = GetTaxReturnQuery['getTaxReturn']['incomes'][0]
 
@@ -28,44 +30,43 @@ export default function Income() {
     queryFn: () => graphqlClient.getTaxReturn(),
   })
 
-  const incomeEmployer =
-    taxReturnData?.getTaxReturn.incomes.filter(
-      (i) => i.incomeCategoryId === 1,
-    ) || []
+  const router = useRouter()
 
-  const incomeOther =
-    taxReturnData?.getTaxReturn.incomes.filter(
-      (i) => i.incomeCategoryId !== 1,
-    ) || []
+  const incomes = taxReturnData?.getTaxReturn.incomes ?? []
+
+  const categoryMap = {
+    '1': IncomeCategory.Salary,
+    '2': IncomeCategory.VehicleBenefit,
+    '3': IncomeCategory.Allowance,
+    '4': IncomeCategory.VehicleGrant,
+    '5': IncomeCategory.HousingBenefit,
+    '6': IncomeCategory.OtherBenefit,
+    '7': IncomeCategory.OtherBenefit,
+  }
 
   const form = useAppForm({
     defaultValues: {
-      incomeEmployer: [
-        // { description: 'Norðurljós Software ehf', amount: '9360000' },
-        // { description: 'Mús & Merki ehf.', amount: '900000' },
-        ...incomeEmployer.map((i) => ({
-          description: i.description,
-          amount: i.amount.toString(),
-        })),
-      ],
-      incomeOther: [
-        // {
-        //   description: 'Íþróttastyrkur',
-        //   incomeCategory: '6',
-        //   amount: '1000000',
-        // },
-        // {
-        //   description: 'Starfsmennastyrkur',
-        //   incomeCategory: '7',
-        //   amount: '2000000',
-        // },
-        ...incomeOther.map((i) => ({
+      incomeEmployer: incomes
+        .filter((income) => [1].includes(income.incomeCategoryId))
+        .map((i) => ({
           description: i.description,
           incomeCategory: i.incomeCategoryId.toString(),
           amount: i.amount.toString(),
         })),
-      ],
-      grants: [{ grantCategory: '3', amount: '1000000' }],
+      incomeOther: incomes
+        .filter((income) => [6, 7].includes(income.incomeCategoryId))
+        .map((i) => ({
+          description: i.description,
+          incomeCategory: i.incomeCategoryId.toString(),
+          amount: i.amount.toString(),
+        })),
+      grants: incomes
+        .filter((income) => ![1, 6, 7].includes(income.incomeCategoryId))
+        .map((i) => ({
+          description: i.description,
+          incomeCategory: i.incomeCategoryId.toString(),
+          amount: i.amount.toString(),
+        })),
     },
     onSubmit: async (values) => {
       const income: UpdateTaxReturnInput['incomes'] = []
@@ -74,7 +75,7 @@ export default function Income() {
         income.push({
           description: i.description,
           amount: parseInt(i.amount),
-          category: IncomeCategory.Salary,
+          category: categoryMap[i.incomeCategory as keyof typeof categoryMap],
         })
       })
 
@@ -82,15 +83,15 @@ export default function Income() {
         income.push({
           description: i.description,
           amount: parseInt(i.amount),
-          category: IncomeCategory.OtherBenefit,
+          category: categoryMap[i.incomeCategory as keyof typeof categoryMap],
         })
       })
 
       values.value.grants.forEach((i) => {
         income.push({
-          description: 'Styrkir',
+          description: i.description,
           amount: parseInt(i.amount),
-          category: IncomeCategory.Allowance,
+          category: categoryMap[i.incomeCategory as keyof typeof categoryMap],
         })
       })
 
@@ -99,6 +100,8 @@ export default function Income() {
           incomes: income,
         },
       })
+
+      router.push('/umsokn/framtal/eignir')
     },
   })
 
@@ -165,7 +168,11 @@ export default function Income() {
                 <div>
                   <Button
                     onClick={() =>
-                      field.pushValue({ description: '', amount: '' })
+                      field.pushValue({
+                        description: '',
+                        amount: '',
+                        incomeCategory: '1',
+                      })
                     }
                     type="button"
                     size="default"
@@ -282,7 +289,7 @@ export default function Income() {
                     <div className="flex gap-4 items-center" key={i}>
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 grow">
                         <form.AppField
-                          name={`grants[${i}].grantCategory`}
+                          name={`grants[${i}].incomeCategory`}
                           children={(subField) => (
                             <subField.SelectField
                               label="Tegund hlunninda"
@@ -316,7 +323,11 @@ export default function Income() {
                 <div>
                   <Button
                     onClick={() =>
-                      field.pushValue({ grantCategory: '', amount: '' })
+                      field.pushValue({
+                        incomeCategory: '',
+                        amount: '',
+                        description: '',
+                      })
                     }
                     type="button"
                     size="default"
@@ -362,9 +373,9 @@ export default function Income() {
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/framtal/almennar-upplysingar">Til baka</Link>
         </Button>
-        <Button size="lg">
-          <Link href="/umsokn/framtal/eignir">Áfram í eignir</Link>
-        </Button>
+        <form.AppForm>
+          <form.SubscribeButton label="Áfram í eignir" />
+        </form.AppForm>
       </div>
     </form>
   )
