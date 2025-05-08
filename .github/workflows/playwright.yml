@@ -25,14 +25,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Move to e2e directory
-        run: cd ./packages/e2e
-
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
+        run: yarn workspace e2e playwright install --with-deps
 
       - name: Run Playwright tests
-        run: yarn playwright test
+        run: yarn workspace e2e playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
