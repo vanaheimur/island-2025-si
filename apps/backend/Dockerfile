@@ -36,7 +36,7 @@ ENV AUTH_TOKEN_SECRET="buildMeABetterFuture"
 
 COPY --from=builder /app/out/full/ .
 RUN corepack enable
-RUN yarn turbo run bundle
+RUN yarn turbo run bundle --force
 
 FROM base AS runner
 WORKDIR /app
