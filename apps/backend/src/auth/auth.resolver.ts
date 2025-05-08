@@ -45,6 +45,7 @@ export class AuthResolver {
     }
   }
 
+  @IsPublic()
   @Mutation(() => Boolean)
   logout(@GraphqlResponse() response: Response): boolean {
     // We unset the cookie, the token will then be invalidated when the time runs out
