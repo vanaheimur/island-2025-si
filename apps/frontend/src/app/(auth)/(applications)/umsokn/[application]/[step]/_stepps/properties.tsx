@@ -1,5 +1,8 @@
 'use client'
 
+import { ErrorNotification } from './fetch-error'
+import { Skeleton } from './skeleton'
+
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
@@ -9,8 +12,7 @@ import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
-import { ErrorNotification } from './fetch-error'
-import { Skeleton } from './skeleton'
+import { useRouter } from 'next/navigation'
 
 export default function Properties() {
   const { data, isLoading, error } = useQuery({
@@ -23,6 +25,7 @@ export default function Properties() {
     }),
     staleTime: 1000 * 60 * 5, // 5 minutes
   })
+  const router = useRouter()
 
   const assetsDomestic = data?.assetsDomestic || []
   const assetsForeign = data?.assetsForeign || []
@@ -30,47 +33,23 @@ export default function Properties() {
 
   const form = useAppForm({
     defaultValues: {
-      assetsDomestic: [
-        // {
-        //   description: 'Bláfjallagata 12',
-        //   landNumber: '2109876',
-        //   amount: '52000000',
-        // },
-        ...assetsDomestic.map((i) => ({
-          description: i.description,
-          landNumber: i.landNumber,
-          amount: i.amount.toString(),
-        })),
-      ],
-      assetsForeign: [
-        // {
-        //   description: 'Villa Portofino 5B',
-        //   country: 'Spáni',
-        //   amount: '27000000',
-        // },
-        ...assetsForeign.map((i) => ({
-          description: i.description,
-          country: i.landNumber,
-          amount: i.amount.toString(),
-        })),
-      ],
-      vehicles: [
-        // {
-        //   licensePlate: 'KB-521',
-        //   yearOfPurchase: '2021',
-        //   amount: '3100000',
-        // },
-        // {
-        //   licensePlate: 'JU-329',
-        //   yearOfPurchase: '2012',
-        //   amount: '430000',
-        // },
-        ...vehicles.map((i) => ({
-          licensePlate: i.licensePlate,
-          yearOfPurchase: i.yearOfPurchase.toString(),
-          amount: i.value.toString(),
-        })),
-      ],
+      assetsDomestic: assetsDomestic.map((i) => ({
+        description: i.description,
+        landNumber: i.landNumber,
+        amount: i.amount.toString(),
+      })),
+
+      assetsForeign: assetsForeign.map((i) => ({
+        description: i.description,
+        country: i.landNumber,
+        amount: i.amount.toString(),
+      })),
+
+      vehicles: vehicles.map((i) => ({
+        licensePlate: i.licensePlate,
+        yearOfPurchase: i.yearOfPurchase.toString(),
+        amount: i.value.toString(),
+      })),
     },
     onSubmit: async (values) => {
       const assets: UpdateTaxReturnInput['assets'] = [
@@ -88,17 +67,21 @@ export default function Properties() {
         })),
       ]
 
+      const vehicles: UpdateTaxReturnInput['vehicles'] =
+        values.value.vehicles.map((i) => ({
+          licensePlate: i.licensePlate,
+          yearOfPurchase: Number(i.yearOfPurchase),
+          value: Number(i.amount),
+        }))
+
       await graphqlClient.upsertTaxReturn({
         input: {
-          assets: assets,
-          vehicles: values.value.vehicles.map((i) => ({
-            licensePlate: i.licensePlate,
-            yearOfPurchase: Number(i.yearOfPurchase),
-            amount: Number(i.amount),
-            value: 1,
-          })),
+          assets,
+          vehicles,
         },
       })
+
+      router.push('/umsokn/framtal/skuldir')
     },
   })
 
@@ -363,9 +346,9 @@ export default function Properties() {
         <Button asChild variant="outline" size="lg">
           <Link href="/umsokn/framtal/tekjur">Til baka</Link>
         </Button>
-        <Button size="lg">
-          <Link href="/umsokn/framtal/skuldir">Áfram í skuldir</Link>
-        </Button>
+        <form.AppForm>
+          <form.SubscribeButton label="Áfram í skuldir" />
+        </form.AppForm>
       </div>
     </form>
   )
