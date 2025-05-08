@@ -21,6 +21,14 @@
                 {
                     "name": "PORT",
                     "value": "4000"
+                },
+                {
+                    "name": "RSK_API_BASE_URL",
+                    "value": "http://digital-iceland-2025-rsk-2082447651.eu-west-1.elb.amazonaws.com"
+                },
+                {
+                    "name": "NR_API_BASE_URL",
+                    "value": "http://digital-iceland-2025-nr-426789677.eu-west-1.elb.amazonaws.com"
                 }
             ],
             "secrets": [

@@ -29,6 +29,9 @@ ENV TURBO_TEAM=$TURBO_TEAM
 ARG TURBO_TOKEN
 ENV TURBO_TOKEN=$TURBO_TOKEN
 
+ENV RSK_API_BASE_URL="http://digital-iceland-2025-rsk-2082447651.eu-west-1.elb.amazonaws.com"
+ENV NR_API_BASE_URL="http://digital-iceland-2025-nr-426789677.eu-west-1.elb.amazonaws.com"
+
 COPY --from=builder /app/out/full/ .
 RUN corepack enable
 RUN yarn turbo run bundle
