@@ -13,18 +13,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+
       - name: Enable corepack
         run: corepack enable
+
       - name: Install dependencies
         run: yarn install
+
+      - name: Move to e2e directory
+        run: cd ./packages/e2e
+
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
+
       - name: Run Playwright tests
         run: yarn playwright test
+
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:

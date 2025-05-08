@@ -2,7 +2,8 @@
   "name": "e2e",
   "packageManager": "yarn@4.9.1",
   "scripts": {
-    "test": "playwright test --config=playwright.config.ts"
+    "test": "playwright test --config=playwright.config.ts",
+    "playwright": "playwright"
   },
   "devDependencies": {
     "@playwright/test": "1.52.0",
