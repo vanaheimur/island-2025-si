@@ -1,0 +1,38 @@
+query getTaxReturn {
+  getTaxReturn {
+    year
+    status
+    incomes {
+      id
+      description
+      amount
+      incomeCategoryId
+    }
+    assets {
+      id
+      landNumber
+      description
+      amount
+      isForeign
+    }
+    mortgages {
+      id
+      yearOfPurchase
+      residentialLocation
+      lenderName
+      lenderNationalId
+      loanNumber
+      loanDate
+      loanTermInYears
+      totalPaymentsForTheYear
+      installmentOfNominalValue
+      interestExpenses
+      remainingDebt
+    }
+    otherDebts {
+      id
+      interestExpenses
+      remainingDebt
+    }
+  }
+}
