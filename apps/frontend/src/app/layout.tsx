@@ -1,8 +1,8 @@
-import './globals.css'
-
 import { Toaster } from '@/components/ui/sonner'
 import type { Metadata } from 'next'
 import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google'
+import './globals.css'
+import { Providers } from './Providers'
 
 const ibmPlexSans = IBM_Plex_Sans({
   variable: '--font-ibm-plex-sans',
@@ -31,8 +31,10 @@ export default function RootLayout({
       <body
         className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased font-sans flex flex-col min-h-screen`}
       >
-        {children}
-        <Toaster />
+        <Providers>
+          {children}
+          <Toaster />
+        </Providers>
       </body>
     </html>
   )

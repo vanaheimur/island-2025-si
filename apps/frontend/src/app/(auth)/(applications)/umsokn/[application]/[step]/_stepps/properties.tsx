@@ -4,27 +4,29 @@ import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
-import { GetTaxReturnQuery, UpdateTaxReturnInput } from '@/graphql/generated'
+import { UpdateTaxReturnInput } from '@/graphql/generated'
 import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
+import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-
-type Asset = GetTaxReturnQuery['getTaxReturn']['assets'][0]
-type Vehicles = GetTaxReturnQuery['getTaxReturn']['vehicles'][0]
+import { ErrorNotification } from './fetch-error'
+import { Skeleton } from './skeleton'
 
 export default function Properties() {
-  const [assetsDomestic, setAssetsDomestic] = useState<Asset[]>([])
-  const [assetsForeign, setAssetsForeign] = useState<Asset[]>([])
-  const [vehicles, setVehicles] = useState<Vehicles[]>([])
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['taxReturn'],
+    queryFn: () => graphqlClient.getTaxReturn(),
+    select: (res) => ({
+      assetsDomestic: res.getTaxReturn.assets.filter((i) => !i.isForeign),
+      assetsForeign: res.getTaxReturn.assets.filter((i) => i.isForeign),
+      vehicles: res.getTaxReturn.vehicles,
+    }),
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  })
 
-  useEffect(() => {
-    graphqlClient.getTaxReturn().then((res) => {
-      setAssetsDomestic(res.getTaxReturn.assets.filter((i) => !i.isForeign))
-      setAssetsForeign(res.getTaxReturn.assets.filter((i) => i.isForeign))
-      setVehicles(res.getTaxReturn.vehicles)
-    })
-  }, [])
+  const assetsDomestic = data?.assetsDomestic || []
+  const assetsForeign = data?.assetsForeign || []
+  const vehicles = data?.vehicles || []
 
   const form = useAppForm({
     defaultValues: {
@@ -100,6 +102,10 @@ export default function Properties() {
     },
   })
 
+  if (isLoading) {
+    return <Skeleton />
+  }
+
   return (
     <form
       onSubmit={(e) => {
@@ -110,6 +116,7 @@ export default function Properties() {
       className="flex flex-col gap-20"
     >
       <div>
+        {error && <ErrorNotification />}
         <Text variant="h2" className="mb-4">
           4.1 - Fasteignir
         </Text>

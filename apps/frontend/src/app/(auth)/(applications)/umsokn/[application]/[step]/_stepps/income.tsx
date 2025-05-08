@@ -11,25 +11,32 @@ import {
 } from '@/graphql/generated'
 import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
+import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { ErrorNotification } from './fetch-error'
+import { Skeleton } from './skeleton'
 
 type Income = GetTaxReturnQuery['getTaxReturn']['incomes'][0]
 
 export default function Income() {
-  const [incomeEmployer, setIncomeEmployer] = useState<Income[]>([])
-  const [incomeOther, setIncomeOther] = useState<Income[]>([])
+  const {
+    data: taxReturnData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['taxReturn'],
+    queryFn: () => graphqlClient.getTaxReturn(),
+  })
 
-  useEffect(() => {
-    graphqlClient.getTaxReturn().then((res) => {
-      setIncomeEmployer(
-        res.getTaxReturn.incomes.filter((i) => i.incomeCategoryId === 1),
-      )
-      setIncomeOther(
-        res.getTaxReturn.incomes.filter((i) => i.incomeCategoryId !== 1),
-      )
-    })
-  }, [])
+  const incomeEmployer =
+    taxReturnData?.getTaxReturn.incomes.filter(
+      (i) => i.incomeCategoryId === 1,
+    ) || []
+
+  const incomeOther =
+    taxReturnData?.getTaxReturn.incomes.filter(
+      (i) => i.incomeCategoryId !== 1,
+    ) || []
 
   const form = useAppForm({
     defaultValues: {
@@ -95,6 +102,10 @@ export default function Income() {
     },
   })
 
+  if (isLoading) {
+    return <Skeleton />
+  }
+
   return (
     <form
       onSubmit={(e) => {
@@ -105,6 +116,7 @@ export default function Income() {
       className="flex flex-col gap-20"
     >
       <div>
+        {error && <ErrorNotification />}
         <Text variant="h2" className="mb-4">
           2.1 - Tekjur frá launagreiðanda
         </Text>

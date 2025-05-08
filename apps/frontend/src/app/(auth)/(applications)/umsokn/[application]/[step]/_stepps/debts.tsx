@@ -4,31 +4,26 @@ import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
-import { GetTaxReturnQuery } from '@/graphql/generated'
+import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-
-type Mortgage = GetTaxReturnQuery['getTaxReturn']['mortgages'][0]
-type OtherDebt = GetTaxReturnQuery['getTaxReturn']['otherDebts'][0]
+import { ErrorNotification } from './fetch-error'
+import { Skeleton } from './skeleton'
 
 export default function Debts() {
-  const [propertyValue, setPropertyValue] = useState('')
-  const [mortgage, setMortgage] = useState<Mortgage | null>(null)
-  const [otherDebt, setOtherDebt] = useState<OtherDebt[]>([])
+  const {
+    data: taxReturnData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['taxReturn'],
+    queryFn: () => graphqlClient.getTaxReturn(),
+  })
 
-  useEffect(() => {
-    graphqlClient.getTaxReturn().then((res) => {
-      if (res.getTaxReturn.mortgages.length > 0) {
-        setMortgage(res.getTaxReturn.mortgages[0])
-        if (res.getTaxReturn.assets.length > 0) {
-          setPropertyValue(res.getTaxReturn.assets[0].amount.toString())
-        }
-      }
-
-      setOtherDebt(res.getTaxReturn.otherDebts)
-    })
-  }, [])
+  const mortgage = taxReturnData?.getTaxReturn.mortgages?.[0] || null
+  const propertyValue =
+    taxReturnData?.getTaxReturn.assets?.[0]?.amount?.toString() || ''
+  const otherDebt = taxReturnData?.getTaxReturn.otherDebts || []
 
   const form = useAppForm({
     defaultValues: {
@@ -98,6 +93,13 @@ export default function Debts() {
   const loanDate = form.getFieldValue('loanDate')
   const loanTermInYears = form.getFieldValue('loanTermInYears')
 
+  // Error notification at the top of the page
+
+  // Loading skeleton that mirrors the actual form structure
+  if (isLoading) {
+    return <Skeleton />
+  }
+
   return (
     <form
       onSubmit={(e) => {
@@ -108,6 +110,7 @@ export default function Debts() {
       className="flex flex-col gap-20"
     >
       <div>
+        {error && <ErrorNotification />}
         <Text variant="h2" className="mb-4">
           5.1 - Vaxtagjöld
         </Text>
