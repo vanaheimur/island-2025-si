@@ -3,26 +3,56 @@
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
+import { graphqlClient } from '@/graphql/client'
+import { GetTaxReturnQuery } from '@/graphql/generated'
 import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+// TODO: fix when graphql is updated
+
+type Asset = GetTaxReturnQuery['getTaxReturn']['assets'][0]
+// type Vehicles = GetTaxReturnQuery['getTaxReturn']['vehicles'][0]
 
 export default function Properties() {
+  const [assetsDomestic, setAssetsDomestic] = useState<Asset[]>([])
+  const [assetsForeign, setAssetsForeign] = useState<Asset[]>([])
+  // const [vehicles, setVehicles] = useState<Vehicles[]>([])
+
+  useEffect(() => {
+    graphqlClient.getTaxReturn().then((res) => {
+      setAssetsDomestic(res.getTaxReturn.assets.filter((i) => !i.isForeign))
+      setAssetsForeign(res.getTaxReturn.assets.filter((i) => i.isForeign))
+      // setVehicles(res.getTaxReturn.vehicles)
+    })
+  }, [])
+
   const form = useAppForm({
     defaultValues: {
       assetsDomestic: [
-        {
-          description: 'Bláfjallagata 12',
-          landNumber: '2109876',
-          amount: '52000000',
-        },
+        // {
+        //   description: 'Bláfjallagata 12',
+        //   landNumber: '2109876',
+        //   amount: '52000000',
+        // },
+        ...assetsDomestic.map((i) => ({
+          description: i.description,
+          landNumber: i.landNumber,
+          amount: i.amount.toString(),
+        })),
       ],
       assetsForeign: [
-        {
-          description: 'Villa Portofino 5B',
-          country: 'Spáni',
-          amount: '27000000',
-        },
+        // {
+        //   description: 'Villa Portofino 5B',
+        //   country: 'Spáni',
+        //   amount: '27000000',
+        // },
+        ...assetsForeign.map((i) => ({
+          description: i.description,
+          country: i.landNumber,
+          amount: i.amount.toString(),
+        })),
       ],
       vehicles: [
         {
@@ -35,6 +65,11 @@ export default function Properties() {
           yearOfPurchase: '2012',
           amount: '430000',
         },
+        // ...vehicles.map((i) => ({
+        //   licensePlate: i.licensePlate,
+        //   yearOfPurchase: i.yearOfPurchase,
+        //   amount: i.amount.toString(),
+        // })),
       ],
     },
     onSubmit: (values) => {

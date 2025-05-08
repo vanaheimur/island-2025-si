@@ -3,28 +3,56 @@
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
+import { graphqlClient } from '@/graphql/client'
+import { GetTaxReturnQuery } from '@/graphql/generated'
 import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+type Income = GetTaxReturnQuery['getTaxReturn']['incomes'][0]
 
 export default function Income() {
+  const [incomeEmployer, setIncomeEmployer] = useState<Income[]>([])
+  const [incomeOther, setIncomeOther] = useState<Income[]>([])
+
+  useEffect(() => {
+    graphqlClient.getTaxReturn().then((res) => {
+      setIncomeEmployer(
+        res.getTaxReturn.incomes.filter((i) => i.incomeCategoryId === 1),
+      )
+      setIncomeOther(
+        res.getTaxReturn.incomes.filter((i) => i.incomeCategoryId !== 1),
+      )
+    })
+  }, [])
+
   const form = useAppForm({
     defaultValues: {
       incomeEmployer: [
-        { description: 'Norðurljós Software ehf', amount: '9360000' },
-        { description: 'Mús & Merki ehf.', amount: '900000' },
+        // { description: 'Norðurljós Software ehf', amount: '9360000' },
+        // { description: 'Mús & Merki ehf.', amount: '900000' },
+        ...incomeEmployer.map((i) => ({
+          description: i.description,
+          amount: i.amount.toString(),
+        })),
       ],
       incomeOther: [
-        {
-          description: 'Íþróttastyrkur',
-          incomeCategory: '6',
-          amount: '1000000',
-        },
-        {
-          description: 'Starfsmennastyrkur',
-          incomeCategory: '7',
-          amount: '2000000',
-        },
+        // {
+        //   description: 'Íþróttastyrkur',
+        //   incomeCategory: '6',
+        //   amount: '1000000',
+        // },
+        // {
+        //   description: 'Starfsmennastyrkur',
+        //   incomeCategory: '7',
+        //   amount: '2000000',
+        // },
+        ...incomeOther.map((i) => ({
+          description: i.description,
+          incomeCategory: i.incomeCategoryId.toString(),
+          amount: i.amount.toString(),
+        })),
       ],
       grants: [{ grantCategory: '3', amount: '1000000' }],
     },

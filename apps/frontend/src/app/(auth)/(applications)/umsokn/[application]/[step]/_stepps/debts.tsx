@@ -3,26 +3,47 @@
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
-// import SvgAdd from '@/icons/Add'
-// import SvgRemove from '@/icons/Remove'
+import { graphqlClient } from '@/graphql/client'
+import { GetTaxReturnQuery } from '@/graphql/generated'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+type Mortgage = GetTaxReturnQuery['getTaxReturn']['mortgages'][0]
+type OtherDebt = GetTaxReturnQuery['getTaxReturn']['otherDebts'][0]
 
 export default function Debts() {
+  const [propertyValue, setPropertyValue] = useState('')
+  const [mortgage, setMortgage] = useState<Mortgage | null>(null)
+  const [otherDebt, setOtherDebt] = useState<OtherDebt[]>([])
+
+  useEffect(() => {
+    graphqlClient.getTaxReturn().then((res) => {
+      if (res.getTaxReturn.mortgages.length > 0) {
+        setMortgage(res.getTaxReturn.mortgages[0])
+        if (res.getTaxReturn.assets.length > 0) {
+          setPropertyValue(res.getTaxReturn.assets[0].amount.toString())
+        }
+      }
+
+      setOtherDebt(res.getTaxReturn.otherDebts)
+    })
+  }, [])
+
   const form = useAppForm({
     defaultValues: {
       // mortgage
-      residentialLocation: 'Bláfjallagata 12',
-      yearOfPurchase: '2021',
-      propertyValue: '52000000',
-      lenderName: 'Íslandsbanki hf.',
-      lenderNationalId: '4910080160',
-      loanNumber: '56783900123',
-      loanDate: '15.júní 2021',
-      loanTermInYears: '30',
-      totalPaymentsForTheYear: '2280000',
-      installmentOfNominalValue: '1360000',
-      interestExpenses: '920000',
-      remainingDebt: '28540000',
+      residentialLocation: mortgage?.residentialLocation ?? '', // 'Bláfjallagata 12',
+      yearOfPurchase: mortgage?.yearOfPurchase ?? '', // '2021',
+      propertyValue: propertyValue, // '52000000',
+      lenderName: mortgage?.lenderName ?? '', // 'Íslandsbanki hf.',
+      lenderNationalId: mortgage?.lenderNationalId ?? '', // '4910080160',
+      loanNumber: mortgage?.loanNumber ?? '', // '56783900123',
+      loanDate: mortgage?.loanDate ?? '', // '15.júní 2021',
+      loanTermInYears: mortgage?.loanTermInYears ?? '', // '30',
+      totalPaymentsForTheYear: mortgage?.totalPaymentsForTheYear ?? '', // '2280000',
+      installmentOfNominalValue: mortgage?.installmentOfNominalValue ?? '', // '1360000',
+      interestExpenses: mortgage?.interestExpenses ?? '', // '920000',
+      remainingDebt: mortgage?.remainingDebt ?? '', // '28540000',
 
       otherDebts: [
         {
@@ -50,6 +71,11 @@ export default function Debts() {
           interestExpenses: '224',
           remainingDebt: '0',
         },
+        ...otherDebt.map((debt) => ({
+          description: '', // debt.description, TODO: fix when graphql is updated
+          interestExpenses: debt.interestExpenses.toString(),
+          remainingDebt: debt.remainingDebt.toString(),
+        })),
       ],
     },
     onSubmit: (values) => {
