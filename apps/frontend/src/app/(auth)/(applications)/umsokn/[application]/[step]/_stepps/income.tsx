@@ -106,7 +106,7 @@ export default function Income() {
     >
       <div>
         <Text variant="h2" className="mb-4">
-          2.1 - Tekjur frá launagreiðenda
+          2.1 - Tekjur frá launagreiðanda
         </Text>
         <Text variant="sm" className="mb-4">
           Laun og launatengdar greiðslur.
@@ -173,7 +173,7 @@ export default function Income() {
         </Text>
         <Text variant="sm" className="mb-4">
           Einstaklingar í óvígðri sambúð sem uppfylla skilyrði, geta óskað eftir
-          samsköttun með að merkja í reitinn.
+          samsköttun með því að merkja í reitinn.
         </Text>
       </div>
 
@@ -324,7 +324,7 @@ export default function Income() {
         </Text>
         <Text variant="sm" className="mb-4">
           Tilgreinið kaup og sölu hvers konar lausafjár, ökutækja, hjólhýsa
-          o.s.fv.
+          o.s.frv.
         </Text>
       </div>
 
@@ -333,7 +333,7 @@ export default function Income() {
           2.6 - Erlendar tekjur
         </Text>
         <Text variant="sm" className="mb-4">
-          Erlendar tekjur, laun o.s.fv.
+          Erlendar tekjur, laun o.s.frv.
         </Text>
       </div>
 
@@ -342,7 +342,7 @@ export default function Income() {
           2.7 - Skattfrjálsar tekjur
         </Text>
         <Text variant="sm" className="mb-4">
-          Skattfrjálsar tekjur, happdrættisvinningar o.s.fv.
+          Skattfrjálsar tekjur, happdrættisvinningar o.s.frv.
         </Text>
       </div>
 
