@@ -21,7 +21,7 @@ export default function Auth() {
       .getUser()
       .then((res) => {
         if (isMounted && res?.getUser) {
-          router.push('/umsokn/framtal/upplysingasofnun')
+          router.push('/umsokn/framtal/upplysingaoflun')
         } else {
           setChecking(false)
         }
@@ -43,7 +43,7 @@ export default function Auth() {
         .login({ nationalId: values.value.nationalId })
         .then((res) => {
           if (res.login) {
-            router.push('/umsokn/framtal/upplysingasofnun')
+            router.push('/umsokn/framtal/upplysingaoflun')
           }
         })
         .catch((err) => console.log('err:', err))

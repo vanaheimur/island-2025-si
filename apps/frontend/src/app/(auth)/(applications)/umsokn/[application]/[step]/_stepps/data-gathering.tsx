@@ -6,41 +6,32 @@ export default function DataGathering() {
   return (
     <div className="flex flex-col">
       <Text variant="h2" className="mb-4">
-        Upplýsingasöfnun
+        Upplýsingaöflun
       </Text>
       <Text className="font-semibold mb-8">
         Eftirfarandi gögn verða sótt rafrænt.
       </Text>
       <Text className="text-primary font-semibold mb-2">
-        Persónuupplýsingar úr Þjóðskrá
+        Upplýsingar úr Þjóðskrá
       </Text>
-      <Text className="mb-8">
-        Til þess að auðvelda fyrir sækjum við persónuupplýsingar úr Þjóðskrá til
-        þess að fylla út umsóknina
-      </Text>
+      <Text className="mb-8">Sóttar eru persónuupplýsingar úr Þjóðskrá.</Text>
       <Text className="text-primary font-semibold mb-2">
         Netfang og símanúmer úr þínum stillingum
       </Text>
-      <Text className="mb-8">
-        Til þess að auðvelda umsóknarferlið er gott að hafa fyllt út netfang og
-        símanúmer á mínum síðum
-      </Text>
+      <Text className="mb-8">Netfang og símanúmer er sótt af mínum síðum.</Text>
       <Text className="text-primary font-semibold mb-2">
-        Upplýsingar úr ökuskírteinaskrá
+        Upplýsingar frá Skattinum
       </Text>
       <Text className="mb-8">
-        Sóttar eru almennar upplýsingar um núverandi réttindi, sviptingar,
-        punktastöðu, akstursmat og tákntölur sem varða heilsufar/sjón á fyrra
-        ökuskírteini ef við á.
+        Sóttar eru nauðsynlegar upplýsingar fyrir útfyllingu skattframtals frá
+        Skattinum.
       </Text>
       <CheckboxField name="consent">
-        Persónuupplýsingar úr Þjóðskrá
+        Ég skil að ofangreind gögn verða sótt
       </CheckboxField>
 
       <Button className="ml-auto mt-8" size="lg" asChild>
-        <Link href="/umsokn/framtal/almennar-upplysingar">
-          Áfram í framtal
-        </Link>
+        <Link href="/umsokn/framtal/almennar-upplysingar">Áfram í framtal</Link>
       </Button>
     </div>
   )

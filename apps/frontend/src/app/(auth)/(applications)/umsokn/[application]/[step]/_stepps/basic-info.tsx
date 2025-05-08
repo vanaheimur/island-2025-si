@@ -73,7 +73,7 @@ export default function BasicInfo() {
                         <form.AppField name={`children[${i}].name`}>
                           {(subField) => (
                             <subField.TextField
-                              label="Name"
+                              label="Nafn"
                               size="md"
                               disabled
                             />
@@ -136,29 +136,9 @@ export default function BasicInfo() {
         </form.Field>
       </div>
 
-      <div>
-        <Text variant="h2" className="mb-4">
-          1.2 - Samsköttun
-        </Text>
-        <Text variant="sm" className="mb-4">
-          Einstaklingar í óvígðri sambúð sem uppfylla skilyrði, geta óskað eftir
-          samsköttun með að merkja í reitinn.
-        </Text>
-      </div>
-
-      <div>
-        <Text variant="h2" className="mb-4">
-          1.3 - Dvalartími - búseta á íslandi hluta úr ári
-        </Text>
-        <Text variant="sm" className="mb-4">
-          Ef þú bjóst á íslandi aðerins hluta ársins fyllir þú inn dagsetningar
-          hér.
-        </Text>
-      </div>
-
       <div className="flex justify-between">
         <Button asChild variant="outline" size="lg">
-          <Link href="/umsokn/framtal/upplysingasofnun">Til baka</Link>
+          <Link href="/umsokn/framtal/upplysingaoflun">Til baka</Link>
         </Button>
         <form.AppForm>
           <form.SubscribeButton label="Áfram í tekjur" />

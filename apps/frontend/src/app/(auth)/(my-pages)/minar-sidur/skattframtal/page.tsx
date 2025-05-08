@@ -14,7 +14,7 @@ export default function MyPages() {
         <Text variant="xs" className="font-semibold mb-8">
           Virk framtöl
         </Text>
-        <Card date="08.05.2025" buttonLink="/umsokn/framtal/upplysingasofnun" />
+        <Card date="08.05.2025" buttonLink="/umsokn/framtal/upplysingaoflun" />
       </div>
       <div className="mt-12">
         <Text variant="xs" className="font-semibold mb-8">

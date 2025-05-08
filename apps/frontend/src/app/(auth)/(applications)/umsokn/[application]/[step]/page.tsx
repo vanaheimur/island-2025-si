@@ -14,7 +14,7 @@ type Props = {
 }
 
 const steps = {
-  upplysingasofnun: DataGathering,
+  upplysingaoflun: DataGathering,
   'almennar-upplysingar': BasicInfo,
   tekjur: Income,
   eignir: Properties,
@@ -60,9 +60,9 @@ export default async function StepPage({ params }: Props) {
         <Stepper
           steps={[
             {
-              label: 'Upplýsingasöfnun',
+              label: 'Upplýsingaöflun',
               step: '',
-              active: step === 'upplysingasofnun',
+              active: step === 'upplysingaoflun',
             },
             {
               label: 'Almennar upplýsingar',

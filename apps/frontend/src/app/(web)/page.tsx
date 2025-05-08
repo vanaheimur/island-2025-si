@@ -193,7 +193,7 @@ const CTA = () => (
     </Text>
     <div className="md:ml-auto">
       <Button size="lg" asChild>
-        <Link href="/umsokn/framtal/upplysingasofnun">
+        <Link href="/umsokn/framtal/upplysingaoflun">
           Opna <SvgOpenOutline />
         </Link>
       </Button>
