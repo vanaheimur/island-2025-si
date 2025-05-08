@@ -5,9 +5,11 @@ import { useFieldContext } from './form-context'
 export function TextField({
   label,
   size,
+  disabled,
 }: {
   label: string
   size?: 'lg' | 'md' | 'sm'
+  disabled?: boolean
 }) {
   // The `Field` infers that it should have a `value` type of `string`
   const field = useFieldContext<string>()
@@ -25,6 +27,7 @@ export function TextField({
           ? field.state.meta.errors.map((e) => e.message).join(', ')
           : undefined
       }
+      disabled={disabled}
     />
   )
 }

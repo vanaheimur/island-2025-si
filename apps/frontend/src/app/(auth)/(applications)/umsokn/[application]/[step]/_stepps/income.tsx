@@ -145,7 +145,7 @@ export default function Income() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="outline"
                       >
                         <SvgRemove className="size-7" />
                       </Button>
@@ -231,7 +231,7 @@ export default function Income() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="outline"
                       >
                         <SvgRemove className="size-7" />
                       </Button>
@@ -302,7 +302,7 @@ export default function Income() {
                         onClick={() => field.removeValue(i)}
                         type="button"
                         size="lg"
-                        variant="destructive"
+                        variant="outline"
                       >
                         <SvgRemove className="size-7" />
                       </Button>

@@ -3,23 +3,20 @@
 import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
-import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
-import { z } from 'zod'
+import { useRouter } from 'next/navigation'
 
 export default function BasicInfo() {
+  const router = useRouter()
   const form = useAppForm({
     defaultValues: {
-      ssn: '',
-      ssnSpouse: '1234567830',
-      test: '',
-      tala: '',
-      children: [{ name: '', ssn: '' }],
+      ssn: '1234567830',
+      ssnSpouse: '',
+      children: [{ name: 'Heimir Jónsson', ssn: '1234567830' }],
       samskottun: false,
-      tester: '',
     },
     onSubmit: (values) => {
-      console.log(values)
+      router.push('/umsokn/framtal/tekjur')
     },
   })
 
@@ -34,19 +31,16 @@ export default function BasicInfo() {
     >
       <div>
         <Text variant="h2" className="mb-4">
-          Jökull Þórðarson
+          Jón Jónsson
         </Text>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <form.AppField
             name="ssn"
-            validators={{
-              onChange: z.string().min(10, 'Kennitala verður að vera 10 tölur'),
-            }}
             children={(field) => (
               <field.PatternField
                 label="Kennitala framteljanda"
                 format="###### ####"
-                required
+                disabled
               />
             )}
           />
@@ -55,22 +49,6 @@ export default function BasicInfo() {
             children={(field) => (
               <field.PatternField label="Kennitala maka" format="###### ####" />
             )}
-          />
-          <form.AppField
-            name="test"
-            children={(field) => (
-              <field.SelectField
-                label="Kennitala maka"
-                options={[
-                  { label: 'eitthvað', value: '1' },
-                  { label: 'eitthvað annað', value: '2' },
-                ]}
-              />
-            )}
-          />
-          <form.AppField
-            name="tala"
-            children={(field) => <field.NumericField label="Prufu tala" />}
           />
         </div>
       </div>
@@ -93,7 +71,11 @@ export default function BasicInfo() {
                       <div className="grow">
                         <form.AppField name={`children[${i}].name`}>
                           {(subField) => (
-                            <subField.TextField label="Name" size="md" />
+                            <subField.TextField
+                              label="Name"
+                              size="md"
+                              disabled
+                            />
                           )}
                         </form.AppField>
                       </div>
@@ -104,18 +86,11 @@ export default function BasicInfo() {
                               label="Kennitala"
                               format="###### ####"
                               size="md"
+                              disabled
                             />
                           )}
                         </form.AppField>
                       </div>
-                      <Button
-                        onClick={() => field.removeValue(i)}
-                        type="button"
-                        size="lg"
-                        variant="utility"
-                      >
-                        <SvgRemove className="size-7" />
-                      </Button>
                     </div>
                   )
                 })}
@@ -142,9 +117,6 @@ export default function BasicInfo() {
           Einstaklingar í óvígðri sambúð sem uppfylla skilyrði, geta óskað eftir
           samsköttun með að merkja í reitinn.
         </Text>
-        <form.AppField name="samskottun">
-          {(field) => <field.CheckboxField label="Samsköttun" />}
-        </form.AppField>
       </div>
 
       <div>
@@ -155,23 +127,6 @@ export default function BasicInfo() {
           Ef þú bjóst á íslandi aðerins hluta ársins fyllir þú inn dagsetningar
           hér.
         </Text>
-        <form.AppField name="tester">
-          {(field) => (
-            <field.RadioGroupField
-              className="grid grid-cols-2 gap-6"
-              options={[
-                {
-                  label: 'eitthvað',
-                  value: '1',
-                },
-                {
-                  label: 'eitthvað annað',
-                  value: '2',
-                },
-              ]}
-            />
-          )}
-        </form.AppField>
       </div>
 
       <div className="flex justify-between">
