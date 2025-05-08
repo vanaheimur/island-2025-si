@@ -15,6 +15,12 @@ query getTaxReturn {
       amount
       isForeign
     }
+    vehicles {
+      id
+      licensePlate
+      yearOfPurchase
+      value
+    }
     mortgages {
       id
       yearOfPurchase
@@ -31,6 +37,7 @@ query getTaxReturn {
     }
     otherDebts {
       id
+      description
       interestExpenses
       remainingDebt
     }

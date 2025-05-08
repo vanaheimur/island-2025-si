@@ -72,7 +72,7 @@ export default function Debts() {
           remainingDebt: '0',
         },
         ...otherDebt.map((debt) => ({
-          description: '', // debt.description, TODO: fix when graphql is updated
+          description: debt.description,
           interestExpenses: debt.interestExpenses.toString(),
           remainingDebt: debt.remainingDebt.toString(),
         })),

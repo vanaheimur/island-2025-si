@@ -10,21 +10,19 @@ import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-// TODO: fix when graphql is updated
-
 type Asset = GetTaxReturnQuery['getTaxReturn']['assets'][0]
-// type Vehicles = GetTaxReturnQuery['getTaxReturn']['vehicles'][0]
+type Vehicles = GetTaxReturnQuery['getTaxReturn']['vehicles'][0]
 
 export default function Properties() {
   const [assetsDomestic, setAssetsDomestic] = useState<Asset[]>([])
   const [assetsForeign, setAssetsForeign] = useState<Asset[]>([])
-  // const [vehicles, setVehicles] = useState<Vehicles[]>([])
+  const [vehicles, setVehicles] = useState<Vehicles[]>([])
 
   useEffect(() => {
     graphqlClient.getTaxReturn().then((res) => {
       setAssetsDomestic(res.getTaxReturn.assets.filter((i) => !i.isForeign))
       setAssetsForeign(res.getTaxReturn.assets.filter((i) => i.isForeign))
-      // setVehicles(res.getTaxReturn.vehicles)
+      setVehicles(res.getTaxReturn.vehicles)
     })
   }, [])
 
@@ -55,21 +53,21 @@ export default function Properties() {
         })),
       ],
       vehicles: [
-        {
-          licensePlate: 'KB-521',
-          yearOfPurchase: '2021',
-          amount: '3100000',
-        },
-        {
-          licensePlate: 'JU-329',
-          yearOfPurchase: '2012',
-          amount: '430000',
-        },
-        // ...vehicles.map((i) => ({
-        //   licensePlate: i.licensePlate,
-        //   yearOfPurchase: i.yearOfPurchase,
-        //   amount: i.amount.toString(),
-        // })),
+        // {
+        //   licensePlate: 'KB-521',
+        //   yearOfPurchase: '2021',
+        //   amount: '3100000',
+        // },
+        // {
+        //   licensePlate: 'JU-329',
+        //   yearOfPurchase: '2012',
+        //   amount: '430000',
+        // },
+        ...vehicles.map((i) => ({
+          licensePlate: i.licensePlate,
+          yearOfPurchase: i.yearOfPurchase.toString(),
+          amount: i.value.toString(),
+        })),
       ],
     },
     onSubmit: (values) => {
