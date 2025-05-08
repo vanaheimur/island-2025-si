@@ -242,7 +242,7 @@ export default function Properties() {
                     type="button"
                     size="default"
                   >
-                    Nýr fasteign <SvgAdd className="text-white" />
+                    Ný fasteign <SvgAdd className="text-white" />
                   </Button>
                 </div>
               </div>
@@ -328,7 +328,7 @@ export default function Properties() {
           <Text variant="h4">Dragðu skjöl hingað til að hlaða upp</Text>
           <Text variant="sm" className="text-center">
             Þú getur hlaðið inn yfirliti um hlutabréfaeign þína á xls, csv eða
-            pdf sniði og við reiknum út hagnað / tap ársins fyrir þig.
+            pdf sniði og afkoma ársins verður reiknuð út.
           </Text>
           <Button variant="outline">Velja skjöl til að hlaða upp</Button>
         </div>
@@ -345,8 +345,8 @@ export default function Properties() {
         <div className="flex flex-col items-center gap-6 p-6 mb-4 border-2 border-dashed border-blue-300 rounded-lg">
           <Text variant="h4">Dragðu skjöl hingað til að hlaða upp</Text>
           <Text variant="sm" className="text-center">
-            Þú getur hlaðið inn yfirliti um hlutabréfaeign þína á xls, csv eða
-            pdf sniði og við reiknum út hagnað / tap ársins fyrir þig.
+            Þú getur hlaðið inn yfirliti um rafmyntaeign þína á xls, csv eða pdf
+            sniði og afkoma ársins verður reiknuð út.
           </Text>
           <Button variant="outline">Velja skjöl til að hlaða upp</Button>
         </div>
