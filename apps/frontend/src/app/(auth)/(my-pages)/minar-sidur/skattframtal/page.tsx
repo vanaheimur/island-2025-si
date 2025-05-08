@@ -23,7 +23,7 @@ export default function MyPages() {
         <div className="flex flex-col gap-4">
           <Card
             date="08.05.2024"
-            statusLabel="Framtal skilað"
+            statusLabel="Framtali skilað"
             progressWidth="100%"
             progressText="Þú hefur klárað 6 af 6 skrefum"
             buttonLabel="Skoða framtal"
@@ -31,7 +31,7 @@ export default function MyPages() {
           />
           <Card
             date="08.05.2023"
-            statusLabel="Framtal skilað"
+            statusLabel="Framtali skilað"
             progressWidth="100%"
             progressText="Þú hefur klárað 6 af 6 skrefum"
             buttonLabel="Skoða framtal"
@@ -39,7 +39,7 @@ export default function MyPages() {
           />
           <Card
             date="08.05.2022"
-            statusLabel="Framtal skilað"
+            statusLabel="Framtali skilað"
             progressWidth="100%"
             progressText="Þú hefur klárað 6 af 6 skrefum"
             buttonLabel="Skoða framtal"
