@@ -1,4 +1,4 @@
-import { SvgProps as SVGRProps } from '../Icon'
+import { SvgProps as SVGRProps } from '../types'
 
 import * as React from 'react'
 

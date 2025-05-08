@@ -10,10 +10,10 @@ import Done from './_stepps/qqq'
 import skatturinn from './assets/skatturinn.svg'
 
 type Props = {
-  params: {
+  params: Promise<{
     application: string
     step: string
-  }
+  }>
 }
 
 const steps = {
