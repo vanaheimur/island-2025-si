@@ -1,0 +1,51 @@
+mutation upsertTaxReturn($input: UpdateTaxReturnInput!) {
+  upsertTaxReturn(input: $input) {
+    status
+    year
+    userId
+    otherDebts {
+      id
+      description
+      interestExpenses
+      remainingDebt
+      userId
+    }
+    mortgages {
+      id
+      yearOfPurchase
+      residentialLocation
+      lenderName
+      lenderNationalId
+      loanNumber
+      loanDate
+      loanTermInYears
+      totalPaymentsForTheYear
+      installmentOfNominalValue
+      interestExpenses
+      remainingDebt
+      userId
+    }
+    vehicles {
+      id
+      licensePlate
+      yearOfPurchase
+      value
+      userId
+    }
+    assets {
+      id
+      landNumber
+      description
+      amount
+      isForeign
+      userId
+    }
+    incomes {
+      id
+      description
+      amount
+      userId
+      incomeCategoryId
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
-import { GetTaxReturnQuery } from '@/graphql/generated'
+import { GetTaxReturnQuery, UpdateTaxReturnInput } from '@/graphql/generated'
 import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
@@ -70,8 +70,33 @@ export default function Properties() {
         })),
       ],
     },
-    onSubmit: (values) => {
-      console.log(values)
+    onSubmit: async (values) => {
+      const assets: UpdateTaxReturnInput['assets'] = [
+        ...values.value.assetsDomestic.map((i) => ({
+          description: i.description,
+          landNumber: i.landNumber,
+          amount: Number(i.amount),
+          isForeign: false,
+        })),
+        ...values.value.assetsForeign.map((i) => ({
+          description: i.description,
+          landNumber: i.country,
+          amount: Number(i.amount),
+          isForeign: true,
+        })),
+      ]
+
+      await graphqlClient.upsertTaxReturn({
+        input: {
+          assets: assets,
+          vehicles: values.value.vehicles.map((i) => ({
+            licensePlate: i.licensePlate,
+            yearOfPurchase: Number(i.yearOfPurchase),
+            amount: Number(i.amount),
+            value: 1,
+          })),
+        },
+      })
     },
   })
 

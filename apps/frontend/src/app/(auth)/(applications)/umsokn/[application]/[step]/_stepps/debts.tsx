@@ -78,8 +78,16 @@ export default function Debts() {
         })),
       ],
     },
-    onSubmit: (values) => {
-      console.log(values)
+    onSubmit: async (values) => {
+      await graphqlClient.upsertTaxReturn({
+        input: {
+          otherDebts: values.value.otherDebts.map((debt) => ({
+            description: debt.description,
+            interestExpenses: parseFloat(debt.interestExpenses),
+            remainingDebt: parseFloat(debt.remainingDebt),
+          })),
+        },
+      })
     },
   })
 

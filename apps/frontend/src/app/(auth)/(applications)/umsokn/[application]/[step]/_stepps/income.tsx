@@ -4,7 +4,11 @@ import { useAppForm } from '@/components/form/form'
 import { Button } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { graphqlClient } from '@/graphql/client'
-import { GetTaxReturnQuery } from '@/graphql/generated'
+import {
+  GetTaxReturnQuery,
+  IncomeCategory,
+  UpdateTaxReturnInput,
+} from '@/graphql/generated'
 import SvgAdd from '@/icons/Add'
 import SvgRemove from '@/icons/Remove'
 import Link from 'next/link'
@@ -56,8 +60,38 @@ export default function Income() {
       ],
       grants: [{ grantCategory: '3', amount: '1000000' }],
     },
-    onSubmit: (values) => {
-      console.log(values)
+    onSubmit: async (values) => {
+      const income: UpdateTaxReturnInput['incomes'] = []
+
+      values.value.incomeEmployer.forEach((i) => {
+        income.push({
+          description: i.description,
+          amount: parseInt(i.amount),
+          category: IncomeCategory.Salary,
+        })
+      })
+
+      values.value.incomeOther.forEach((i) => {
+        income.push({
+          description: i.description,
+          amount: parseInt(i.amount),
+          category: IncomeCategory.OtherBenefit,
+        })
+      })
+
+      values.value.grants.forEach((i) => {
+        income.push({
+          description: 'Styrkir',
+          amount: parseInt(i.amount),
+          category: IncomeCategory.Allowance,
+        })
+      })
+
+      await graphqlClient.upsertTaxReturn({
+        input: {
+          incomes: income,
+        },
+      })
     },
   })
 
