@@ -33,7 +33,6 @@ export class AuthResolver {
       // We set a secure cookie that the frontend js can't access
       response.cookie(ACCESS_TOKEN, accessToken, {
         httpOnly: true,
-        secure: true,
         sameSite: 'strict',
       })
 
@@ -51,7 +50,6 @@ export class AuthResolver {
     // We unset the cookie, the token will then be invalidated when the time runs out
     response.cookie(ACCESS_TOKEN, '', {
       httpOnly: true,
-      secure: true,
       sameSite: 'strict',
     })
 
