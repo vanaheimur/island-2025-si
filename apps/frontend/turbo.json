@@ -16,9 +16,6 @@
     "generate": {
       "outputs": [
         "generated/**"
-      ],
-      "dependsOn": [
-        "backend#generate"
       ]
     }
   }
