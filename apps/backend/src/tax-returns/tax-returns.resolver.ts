@@ -6,8 +6,6 @@ import { TaxReturnOutput } from './dto/taxReturn.output'
 import { UpdateTaxReturnInput } from './dto/updateTaxReturn.input'
 import { TaxReturnsService } from './tax-returns.service'
 import { Auth } from '../auth/decorators/auth.decorator'
-import { CurrentUser } from '../auth/decorators/currentUser.decorator'
-import { type User } from '../auth/types'
 
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 
@@ -16,10 +14,7 @@ export class TaxReturnsResolver {
   constructor(private readonly taxReturnsService: TaxReturnsService) {}
 
   @Query(() => TaxReturnOutput)
-  async getTaxReturn(
-    @CurrentUser() user: User,
-    @Auth() auth: string,
-  ): Promise<TaxReturnOutput> {
+  async getTaxReturn(@Auth() auth: string): Promise<TaxReturnOutput> {
     const taxReturn = await this.taxReturnsService.getSingleTaxReturn(auth)
 
     return new TaxReturnOutput({
