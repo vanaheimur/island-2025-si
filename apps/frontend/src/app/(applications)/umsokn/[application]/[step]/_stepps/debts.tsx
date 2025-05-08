@@ -23,8 +23,34 @@ export default function Debts() {
       installmentOfNominalValue: '1360000',
       interestExpenses: '920000',
       remainingDebt: '28540000',
-      // other debts
-      otherDebts: [],
+
+      otherDebts: [
+        {
+          description: 'Eftirstöðvar á korti númer: 4469 88XX XXXX 4567',
+          interestExpenses: '39200',
+          remainingDebt: '217000',
+        },
+        {
+          description: 'Aukalán',
+          interestExpenses: '86000',
+          remainingDebt: '980000',
+        },
+        {
+          description: '0142-26-732645 Varðan',
+          interestExpenses: '14500',
+          remainingDebt: '62000',
+        },
+        {
+          description: 'Kílómetragjald, Skatturinn',
+          interestExpenses: '0',
+          remainingDebt: '2370',
+        },
+        {
+          description: 'Þing- og sveitarsjóðsgjöld, Skatturinn',
+          interestExpenses: '224',
+          remainingDebt: '0',
+        },
+      ],
     },
     onSubmit: (values) => {
       console.log(values)
@@ -161,6 +187,50 @@ export default function Debts() {
         <Text variant="sm" className="mb-4">
           Allar aðrar skuldir og vaxtagjöld
         </Text>
+
+        <form.Field name="otherDebts" mode="array">
+          {(field) => {
+            return (
+              <div className="flex flex-col gap-6">
+                {field.state.value.map((_, i) => {
+                  return (
+                    <div className="flex gap-6 items-center" key={i}>
+                      <div className="w-3/5">
+                        <form.AppField name={`otherDebts[${i}].description`}>
+                          {(subField) => (
+                            <subField.TextField label="Lýsing" size="md" />
+                          )}
+                        </form.AppField>
+                      </div>
+                      <div className="w-1/5">
+                        <form.AppField
+                          name={`otherDebts[${i}].interestExpenses`}
+                        >
+                          {(subField) => (
+                            <subField.NumericField
+                              label="Vaxtagjöld"
+                              size="md"
+                            />
+                          )}
+                        </form.AppField>
+                      </div>
+                      <div className="w-1/5">
+                        <form.AppField name={`otherDebts[${i}].remainingDebt`}>
+                          {(subField) => (
+                            <subField.NumericField
+                              label="Eftirstöðvar skulda"
+                              size="md"
+                            />
+                          )}
+                        </form.AppField>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )
+          }}
+        </form.Field>
       </div>
 
       <div>
