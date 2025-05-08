@@ -25,6 +25,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Start server
+        run: npm run dev &
+
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000
+
       - name: Install Playwright Browsers
         run: yarn workspace e2e playwright install --with-deps
 
