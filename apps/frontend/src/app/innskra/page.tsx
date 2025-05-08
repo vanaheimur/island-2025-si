@@ -54,7 +54,7 @@ export default function Auth() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="max-w-md">
+      <div className="max-w-md w-full">
         <div className="flex flex-col items-center gap-2 mb-4 mt-4 pt-2 pb-8 px-6 border border-blue-200 md:mt-20 lg:mt-40">
           <div className="-mt-10 bg-white p-3">
             <Logo iconOnly />
