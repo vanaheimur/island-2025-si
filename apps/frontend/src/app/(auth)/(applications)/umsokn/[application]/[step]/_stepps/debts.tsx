@@ -67,11 +67,11 @@ export default function Debts() {
     },
   })
 
-  const lenderName = form.getFieldValue('lenderName')
-  const lenderNationalId = form.getFieldValue('lenderNationalId')
-  const loanNumber = form.getFieldValue('loanNumber')
-  const loanDate = form.getFieldValue('loanDate')
-  const loanTermInYears = form.getFieldValue('loanTermInYears')
+  const lenderName = mortgage?.lenderName ?? ''
+  const lenderNationalId = mortgage?.lenderNationalId ?? ''
+  const loanNumber = mortgage?.loanNumber ?? ''
+  const loanDate = mortgage?.loanDate ?? ''
+  const loanTermInYears = mortgage?.loanTermInYears ?? ''
 
   // Error notification at the top of the page
 
