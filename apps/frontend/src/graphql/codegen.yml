@@ -1,4 +1,4 @@
-schema: '../backend/schema.gql'
+schema: http://digital-iceland-2025-si-21479889.eu-west-1.elb.amazonaws.com/graphql
 
 documents: ./src/graphql/**/*.graphql
 
